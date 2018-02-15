@@ -1,0 +1,9 @@
+<p>Selected Job</p>
+
+<h3>Job Title:</h3>
+<h1> <%= @job.title %></p>
+<h3>Job Description:</h3> 
+<p><%= @job.description %></p>
+<h3>Job Location: <%= @job.location %></h3>
+
+<%= link_to 'Edit', edit_job_path(@job) %> | <%= link_to "Back to job listings", jobs_path %>

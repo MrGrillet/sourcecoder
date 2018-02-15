@@ -1,0 +1,23 @@
+<h1>All Job Listings</h1>
+<p>
+	<%= link_to "Create new job post", new_job_path %>
+</p>
+
+<table>
+	<tr>
+		<th>Title</th><th>Languages</th><th>Location</th>
+	</tr>
+
+	<% @jobs.each do |job| %>
+	<tr>
+		<td><%= job.title %></td>
+		<td>Coming Soon</td>
+		<td><%= job.location %></td>
+		<td><%= link_to 'View', job_path(job) %></td>
+		<td><%= link_to 'Edit', edit_job_path(job) %></td>
+		<td><%= link_to 'Delete', job_path(job), method: :delete, data: {confirm: "Are you sure?"} %></td>
+	</tr>
+	<% end %>
+</table>
+
+
