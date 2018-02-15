@@ -1,9 +1,10 @@
-<p>Selected Job</p>
+<div class="col-md-offset-2">
+	<h1> <%= @job.title %></p>
+	<p>At COMPANY NAME</p>
+	<h5>Job Description:</h5> 
+	<p><%= @job.description %></p>
 
-<h3>Job Title:</h3>
-<h1> <%= @job.title %></p>
-<h3>Job Description:</h3> 
-<p><%= @job.description %></p>
-<h3>Job Location: <%= @job.location %></h3>
-
-<%= link_to 'Edit', edit_job_path(@job) %> | <%= link_to "Back to job listings", jobs_path %>
+	<h5>Job Location: <%= @job.location %></h5>
+	<hr />
+	<%= link_to 'Edit', edit_job_path(@job) %> | <%= link_to "Back to job listings", jobs_path %>
+</div>

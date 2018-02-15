@@ -1,29 +1,24 @@
-<% if @job.errors.any? %>
-	<h2>The following errors prevented the job listing form being created</h2>
-	<ul>
-		<% @job.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
+<%= render 'shared/errors', obj: @job %>
+<div class="row">
+	<div class="col-md-12"> 
+		<%= form_for(@job, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :title %></div>
+			<div class="col-sm-10 "> <%= f.text_field :title, class: "form-control", placeholder: "Job Title", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :description %></div>
+			<div class="col-sm-10 "><%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Please provide as much detail about the role as possible...", autofocus: true  %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :location %></div>
+			<div class="col-sm-10 "><%= f.text_field :location, class: "form-control", placeholder: "City, Country", autofocus: true %></div>
+		</div>
+		<div class="form-group" >
+			<div class="col-sm-10 col-sm-offset-2"><%= f.submit class: "btn btn-lg btn-success" %>    <%= link_to "Cancel and return to job listings", jobs_path %></div>
+		</div>
 		<% end %>
-	</ul>
-<% end %>
+	</div>
+</div>
 
-<%= form_for @job do |f| %>
-<p>
-	<%= f.label :title %><br>
-	<%= f.text_field :title %>
-</p>
-<p>
-	<%= f.label :description %><br>
-	<%= f.text_area :description %>
-</p>
-<p>
-	<%= f.label :location %><br>
-	<%= f.text_field :location %>
-</p>
-<p>
-	<%= f.submit %>
-	
-</p>
-<% end %>
 
-<%= link_to "Back to job listings", jobs_path %>
