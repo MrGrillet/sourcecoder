@@ -10,7 +10,6 @@ class JobsController < ApplicationController
 	end
 
 	def edit
-		set_job
 	end
 
 	def create
@@ -24,12 +23,9 @@ class JobsController < ApplicationController
 	end
 
 	def show
-		set_job
 	end
 
-
 	def update
-		set_job
 		if @job.update(job_params)
 			flash[:notice] = "Job was successfully created"
 			redirect_to job_path(@job)
@@ -39,22 +35,19 @@ class JobsController < ApplicationController
 	end
 
 	def destroy
-		set_job
 		@job.destroy
 		flash[:notice] = "Job post was deleted"
-		redirect_to jobs_path
-		
+		redirect_to jobs_path	
 	end
 	
 	private
-	def set_job
-		@job = Job.find(params[:id])
-		
-	end
 
-	def job_params
-		params.require(:job).permit(:title, :description, :location)
-	end
+		def set_job
+			@job = Job.find(params[:id])
+		end
 
+		def job_params
+			params.require(:job).permit(:title, :description, :location)
+		end
 
 end
