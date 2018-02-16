@@ -1,9 +1,19 @@
+<% if current_user %>
+			<small> Currently logged in as <%= current_user.email %> who is an: <%= current_user.user_type %> </small>
+<% end %>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
 		<%= link_to "sourceCoder", root_path, class: "navbar-brand", id: "logo" %>
 
+
 		<ul class="nav nav-pills pull-right">
-	  		<% if current_user %>
+			<% if current_user %>
+
+	  		<% if employer? || admin_user? %>
+		  		<li class="nav-item dropdown">
+		  			<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
+		  		</li>
 		  		<li class="nav-item dropdown">
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Company Options</a>
 				    <div class="dropdown-menu">
@@ -11,21 +21,26 @@
 				      <%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
 				      <a class="dropdown-item" href="elements.html">Review Applications</a>
 				      <div class="dropdown-divider"></div>
-				      <a class="dropdown-item" href="#">Update Profile</a>
+				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
 				      <a class="dropdown-item" href="#">Invite User</a>
 				    </div>
 		  		</li>
+		  	<% end %>
+
+		  	<% if applicant? || admin_user? %>
 		  		<li class="nav-item dropdown">
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Options</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Dashboard</a>
 				      <a class="dropdown-item" href="#">Review Applications</a>
-				      <a class="dropdown-item" href="#">Update Profile</a>
+				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
 				      <div class="dropdown-divider"></div>
 				      <a class="dropdown-item" href="#">#</a>
 				    </div>
 		  		</li>
-		  	
+		  	<% end %>
+
+		  	<% if admin_user? %>
 			  	<li class="nav-item dropdown">
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
 				    <div class="dropdown-menu">
@@ -33,9 +48,12 @@
 				      <a class="dropdown-item" href="#">Users</a>
 				      <div class="dropdown-divider"></div>
 				      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
+				      <div class="dropdown-divider"></div>
+				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
 				    </div>
 		  		</li>
-	  			
+	  		<% end %>
+
 	  			<li class="nav-item">
 	  				<%= link_to('Logout', destroy_user_session_path, class: 'nav-link', title: 'Logout', :method => :delete) %>
 	  			 </li>
