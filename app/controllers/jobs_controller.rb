@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
 	before_action :set_job, only: [:edit, :update, :show, :destroy]
+	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
 		@jobs = Job.all	
@@ -37,7 +38,7 @@ class JobsController < ApplicationController
 	def destroy
 		@job.destroy
 		flash[:danger] = "Job post was deleted"
-		redirect_to jobs_path	
+		redirect_to jobs_path
 	end
 	
 	private

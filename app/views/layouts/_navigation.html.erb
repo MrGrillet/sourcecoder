@@ -1,47 +1,59 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container">
 		<%= link_to "sourceCoder", root_path, class: "navbar-brand", id: "logo" %>
-		<ul class="nav nav-pills pull-right">
-	  		
-	  		<li class="nav-item dropdown">
-	    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Company Options</a>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="#">Dashboard</a>
-			      <%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
-			      <a class="dropdown-item" href="elements.html">Review Applications</a>
-			      <div class="dropdown-divider"></div>
-			      <a class="dropdown-item" href="#">#</a>
-			    </div>
-	  		</li>
-	  		<li class="nav-item dropdown">
-	    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Options</a>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="#">Dashboard</a>
-			      <a class="dropdown-item" href="#">Review Applications</a>
-			      <a class="dropdown-item" href="elements.html">Update Profile</a>
-			      <div class="dropdown-divider"></div>
-			      <a class="dropdown-item" href="#">#</a>
-			    </div>
-	  		</li>
-			
-			<li class="nav-item">
-				<%= link_to "View Jobs", jobs_path, class: "nav-link  active"%>
-		  	</li>
-		  	<li class="nav-item">
-		    	<a class="nav-link" href="#">About</a>
-		  	</li>
-		  	<li class="nav-item dropdown">
-	    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dev</a>
-			    <div class="dropdown-menu">
-			      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
-			      <a class="dropdown-item" href="#">Another action</a>
-			      <div class="dropdown-divider"></div>
-			      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
 
-			    </div>
-	  		</li>
-	  		<li class="nav-item">
-			    <a class="nav-link" href="elements.html">Login/ Out</a>
+		<ul class="nav nav-pills pull-right">
+	  		<% if current_user %>
+		  		<li class="nav-item dropdown">
+		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Company Options</a>
+				    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="#">Dashboard</a>
+				      <%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
+				      <a class="dropdown-item" href="elements.html">Review Applications</a>
+				      <div class="dropdown-divider"></div>
+				      <a class="dropdown-item" href="#">#</a>
+				    </div>
+		  		</li>
+		  		<li class="nav-item dropdown">
+		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Options</a>
+				    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="#">Dashboard</a>
+				      <a class="dropdown-item" href="#">Review Applications</a>
+				      <a class="dropdown-item" href="elements.html">Update Profile</a>
+				      <div class="dropdown-divider"></div>
+				      <a class="dropdown-item" href="#">#</a>
+				    </div>
+		  		</li>
+		  	
+			  	<li class="nav-item dropdown">
+		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+				    <div class="dropdown-menu">
+				      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
+				      <a class="dropdown-item" href="#">Another action</a>
+				      <div class="dropdown-divider"></div>
+				      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
+				    </div>
+		  		</li>
+	  			
+	  			<li class="nav-item">
+	  				<%= link_to('Logout', destroy_user_session_path, class: 'nav-link', title: 'Logout', :method => :delete) %>
+	  			 </li>
+	  			 
+	  		<% else %>
+
+	  			 <li class="nav-item">
+		    		<a class="nav-link" href="#">About</a>
+		  		</li>
+	  			 <li class="nav-item">
+					<%= link_to "View Jobs", jobs_path, class: ""%>
+		  		</li>
+	  			<li class="nav-item"> 
+			    	<%= link_to 'Sign In', "/users/sign_in" %>
+			    </li>
+			    <li class="nav-item">
+			    	<%= link_to 'Sign Up', "/users/sign_up", class: "nav-link active" %>
+			    </li>
+			<% end %> 
 			</li>
 		</ul>
 	</div>
