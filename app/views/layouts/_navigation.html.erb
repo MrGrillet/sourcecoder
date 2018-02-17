@@ -28,6 +28,9 @@
 		  	<% end %>
 
 		  	<% if applicant? || admin_user? %>
+		  	<li class="nav-item">
+					<%= link_to "View Jobs", jobs_path, class: ""%>
+		  		</li>
 		  		<li class="nav-item dropdown">
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Options</a>
 				    <div class="dropdown-menu">

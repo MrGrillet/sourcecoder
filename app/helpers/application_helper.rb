@@ -25,4 +25,9 @@ module ApplicationHelper
 		end 
 	end
 
+def user_id
+	current_user.id
+	
+end
+
 end
