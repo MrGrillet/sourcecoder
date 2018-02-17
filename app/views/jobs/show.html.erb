@@ -1,4 +1,7 @@
-<%= @job.user_id %>
+<% if current_user && admin_user? %>
+	<small>This post was created by user <%= @job.user_id %></small>
+<% end %>
+
 <div class="row">
 	<div class="col-md-5">
 		<h1><%= @job.title %></h1>
@@ -21,18 +24,24 @@
 <div class="row">
 	<div class="col-md-8">
 		<p><%= simple_format(@job.description) %></p>	
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-8">
 		<hr />
-		<p><%= link_to 'Edit', edit_job_path(@job), class: "btn btn-xs btn-primary" %>  
-		<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %></p>
-		<hr />	
 	</div>
 </div>
+
+
+<% if current_user && current_user.id == @job.user_id %>
+	<div class="row">
+		<div class="col-md-8">
+			<p><%= link_to 'Edit', edit_job_path(@job), class: "btn btn-xs btn-primary" %>  
+			<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %></p>
+			<hr />
+		</div>
+	</div>
+<% end %>
+
 <div class="row">
 	<div class="col-md-4">
+		<h3>Company Name</h3>
 		<p>I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing. The key is to drink coconut, fresh coconut, trust me. They never said winning was easy. Some people can’t handle success, I can.</p>
 		<p><a href="#">Learn more</a> | <a href="#">www</a> <a href="#">git</a> <a href="#">tw</a> <a href="#">fb</a></p>
 	</div>
@@ -40,10 +49,13 @@
 		<%= image_tag("phone.jpg", class: 'some-class', style: 'width: 100%; padding-top: 30px;' ) %>
 	</div>
 </div>
+
 	<div class="row">
 		<div class="col-md-8 ">
 			<hr />
-			<%= link_to "Apply", new_user_registration_path, class: "btn btn-lg btn-success" %>  
-			<%= link_to "Back to job listings", jobs_path %>
+			<% if !employer? %>
+				<%= link_to "Apply", new_user_registration_path, class: "btn btn-lg btn-success" %>  
+			<% end %>
+			<%= link_to "Back to job listings", jobs_path, class: "btn btn-info" %>
 		</div>
 	</div>
