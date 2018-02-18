@@ -11,29 +11,46 @@
 		<h5>Featured Post: True</h5>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col-md-8">
-
 		<% @job.code_languages.each do |lang| %>
 	  		<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
   		<% end %>
-
-  		
-
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-8">
 		<p><%= simple_format(@job.description) %></p>	
-		<hr />
+	</div>
+ 	<div class="col-sm-4">
+	    <div class="card">
+	      <div class="card-body">
+	        <h4 class="card-title">Featured listing 1</h4>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <a href="#" class="btn btn-primary">Learn more</a>
+	      </div>
+	    </div>
+	    <div class="card">
+	      <div class="card-body">
+	        <h4 class="card-title">Featured listing 2</h4>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <a href="#" class="btn btn-secondary">Learn more</a>
+	      </div>
+	    </div>
+	    <div class="card">
+	      <div class="card-body">
+	        <h4 class="card-title">Featured listing 3</h4>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <a href="#" class="btn btn-success">Learn more</a>
+	      </div>
+	    </div>
 	</div>
 </div>
-
 
 <% if current_user && (current_user.id == @job.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
+			<hr />
 			<p><%= link_to 'Edit', edit_job_path(@job), class: "btn btn-xs btn-primary" %>  
 			<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %></p>
 			<hr />
