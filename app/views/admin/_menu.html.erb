@@ -1,22 +1,27 @@
 <ul>
 	<li><a href="#">Admin</a>
 		<ul>
-			<li><a href="#">Dashboard</a></li>
-			<li><a href="#">User Stats</a></li>
-			<li><a href="#"></a></li>
-			<li><a href="#"></a></li>
+			<li><%= link_to "Dashboard", admin_path%></li>
+			<li>User Stats</li>
+			<li>Manage Users</li>
+			<li>&nbsp;</li>
 		</ul>
 	</li>
-
+	<li><a href="#">Manage Jobs</a>
+		<ul>
+			<li><%= link_to 'Code Languages', code_languages_path %></li>
+			<li><%= link_to 'Add new language', new_code_language_path  %></li>
+			<li>&nbsp;</li>
+		</ul>
+	</li>
 	<li><a href="#">Marketing</a>
 		<ul>
 			<li><a href="#">Pages</a></li>
 			<li><a href="#">Posts</a></li>
 			<li><a href="#">Social Media Profiles</a></li>
-			<li><a href="#"></a></li>
+			<li>&nbsp;</li>
 		</ul>
 	</li>
-	<li><a href="#">Text</a></li>
-	<li><a href="#">Text</a></li>
-	<li><a href="#">Text</a></li>
 </ul>
+
+

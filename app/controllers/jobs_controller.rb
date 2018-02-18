@@ -1,16 +1,20 @@
 class JobsController < ApplicationController
-	before_action :set_job, only: [:edit, :update, :show, :destroy, :apply]
+	before_action :set_job, only: [:edit, :update, :show, :destroy]
 	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
 		@jobs = Job.all	
+		@code_languages = CodeLanguage.all
 	end
 
 	def new
 		@job = Job.new
+		@code_languages = CodeLanguage.all
 	end
 
 	def edit
+		@code_languages = CodeLanguage.all
+
 	end
 
 	def create
@@ -24,12 +28,13 @@ class JobsController < ApplicationController
 		end
 	end
 
+
 	def show
 	end
 
 	def update
 		if @job.update(job_params)
-			flash[:success] = "Job was successfully created"
+			flash[:success] = "Job was successfully updated"
 			redirect_to job_path(@job)
 		else
 			render 'edit'
@@ -42,9 +47,6 @@ class JobsController < ApplicationController
 		redirect_to jobs_path
 	end
 
-	def apply
-		@job = Job.find(params[:id])
-	end
 
 	
 	private
@@ -54,7 +56,7 @@ class JobsController < ApplicationController
 		end
 
 		def job_params
-			params.require(:job).permit(:title, :description, :location)
+			params.require(:job).permit(:title, :description, :location, :salary, code_language_ids:[] )
 		end
 
 end

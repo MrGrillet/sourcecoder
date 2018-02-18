@@ -1,14 +1,10 @@
-<% if current_user && admin_user? %>
-	<small>This post was created by user <%= @job.user_id %></small>
-<% end %>
-
 <div class="row">
 	<div class="col-md-5">
 		<h1><%= @job.title %></h1>
 		<p>at COMPANY NAME</p>
 	</div>
 	<div class="col-md-3">
-		<h5>Salary: £30,000</h5>
+		<h5>Salary: £<%= @job.salary %></h5>
 		<h5>Start Date: </h5>
 		<h5>Posted Date: </h5>
 		<h5>Job Location: <%= @job.location %></h5>
@@ -18,7 +14,13 @@
 
 <div class="row">
 	<div class="col-md-8">
-		<a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a>
+
+		<% @job.code_languages.each do |lang| %>
+	  		<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
+  		<% end %>
+
+  		
+
 	</div>
 </div>
 <div class="row">
@@ -29,7 +31,7 @@
 </div>
 
 
-<% if current_user && current_user.id == @job.user_id %>
+<% if current_user && (current_user.id == @job.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
 			<p><%= link_to 'Edit', edit_job_path(@job), class: "btn btn-xs btn-primary" %>  

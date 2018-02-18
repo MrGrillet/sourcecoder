@@ -1,10 +1,8 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<% if current_user %>
-			<small> Currently logged in as <%= current_user.first_name %> who is an: <%= current_user.user_type %> </small>
-	<% end %>
 		<h1>All Job Listings</h1>
+
 		<p>Lorem Khaled Ipsum is a major key to success. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. Always remember in the jungle there’s a lot of they in there, after you overcome they, you will make it to paradise. Egg whites, turkey sausage, wheat toast, water. Of course they don’t want us to eat our breakfast, so we are going to enjoy our breakfast. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Eliptical talk
 		</p>
 		<hr />
@@ -15,7 +13,11 @@
 			<% @jobs.each do |job| %>
 				<tr>
 					<td><%= link_to job.title, job_path(job) %></td>
-					<td><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></td>
+					<td>
+						<% job.code_languages.each do |lang| %>
+	  						<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a>
+  						<% end %>		
+  					</td>
 					<td><%= job.location %></td>
 
 					<% if current_user && (current_user.id == job.user_id || admin_user?) %>

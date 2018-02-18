@@ -35,7 +35,6 @@
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Options</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Dashboard</a>
-				      <a class="dropdown-item" href="#">Review Applications</a>
 				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
 				      <div class="dropdown-divider"></div>
 				      <a class="dropdown-item" href="#">#</a>
@@ -48,6 +47,8 @@
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
 				    <div class="dropdown-menu">
 				      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
+				      <%= link_to 'Manage Languages', code_languages_path, class: "dropdown-item" %>
+				      <%= link_to 'Add language', new_code_language_path, class: "dropdown-item"  %>
 				      <a class="dropdown-item" href="#">Users</a>
 				      <div class="dropdown-divider"></div>
 				      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
