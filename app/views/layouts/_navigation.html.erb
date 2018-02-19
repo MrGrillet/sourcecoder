@@ -15,12 +15,14 @@
 		  			<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
 		  		</li>
 		  		<li class="nav-item dropdown">
-		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Company Options</a>
+		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employer Menu</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Dashboard</a>
 				      <%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
 				      <a class="dropdown-item" href="elements.html">Review Applications</a>
 				      <div class="dropdown-divider"></div>
+				      <%= link_to "Update Company Profile", edit_company_path(2), class: "dropdown-item"  %>
+
 				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
 				      <a class="dropdown-item" href="#">Invite User</a>
 				    </div>
@@ -32,7 +34,7 @@
 					<%= link_to "View Jobs", jobs_path, class: ""%>
 		  		</li>
 		  		<li class="nav-item dropdown">
-		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Options</a>
+		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Menu</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Dashboard</a>
 				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
@@ -47,10 +49,10 @@
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
 				    <div class="dropdown-menu">
 				      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
-				      <%= link_to 'Manage Languages', code_languages_path, class: "dropdown-item" %>
-				      <%= link_to 'Add language', new_code_language_path, class: "dropdown-item"  %>
+				      <%= link_to 'Languages', code_languages_path, class: "dropdown-item" %>
+				      <%= link_to 'Companies', companies_path, class: "dropdown-item" %>
 				      <a class="dropdown-item" href="#">Users</a>
-				      <a class="dropdown-item" href="#">Ad Spaces</a>
+				      <a class="dropdown-item" href="#">Ads</a>
 				      <div class="dropdown-divider"></div>
 				      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
 				      <div class="dropdown-divider"></div>

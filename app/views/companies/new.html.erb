@@ -1,0 +1,59 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-2"> 
+		<h1>Create your company</h1>
+<%= render 'shared/errors', obj: @company %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12"> 
+		<%= form_for(@company, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :company_name %></div>
+			<div class="col-sm-10 "> <%= f.text_field :company_name, class: "form-control", placeholder: "Facebook", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :description %></div>
+			<div class="col-sm-10 "><%= f.text_area :company_description, rows: 10, class: "form-control", placeholder: "What is your company about? How do you help people?", autofocus: true  %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :strapline %></div>
+			<div class="col-sm-10 "> <%= f.text_field :company_strapline, class: "form-control", placeholder: "A short description about 100 characters long", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :www %></div>
+			<div class="col-sm-10 "> <%= f.text_field :company_url, class: "form-control", placeholder: "facebook.com", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :twitter_url %></div>
+			<div class="col-sm-10 "> <%= f.text_field :company_twitter, class: "form-control", placeholder: "twitter.com/facebook", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :facebook_url %></div>
+			<div class="col-sm-10 "> <%= f.text_field :company_facebook, class: "form-control", placeholder: "facebook.com/facebook", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :github %></div>
+			<div class="col-sm-10 "> <%= f.text_field :company_github, class: "form-control", placeholder: "github.com/facebook", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :wallpaper %></div>
+			<div class="col-sm-10 "> <%= f.text_field :wallpaper_url, class: "form-control", placeholder: "paste a image url from somewhere on the web", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :logo %></div>
+			<div class="col-sm-10 "> <%= f.text_field :logo_url, class: "form-control", placeholder: "paste a logo url from somewhere on the web", autofocus: true %></div>
+		</div>
+		<div class="form-group" > 
+			<div class="col-sm-2 contol-label"><%= f.label :location %></div>
+			<div class="col-sm-10 "> <%= f.text_field :location, class: "form-control", placeholder: "Town, City", autofocus: true %></div>
+		</div>
+		
+
+		<div class="form-group" >
+			<div class="col-sm-10 col-sm-offset-2"><%= f.submit class: "btn btn-lg btn-success" %>    <%= link_to "Cancel and return home", root_path %></div>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+

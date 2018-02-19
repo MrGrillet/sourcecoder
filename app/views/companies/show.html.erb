@@ -1,0 +1,83 @@
+<div class="row">
+	<div class="col-md-6">
+		<h1><%= @company.company_name %></h1>
+		<p><%= @company.location %></p> 
+	</div>
+	<div class="col-md-2">
+		
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8">
+	  <div class="card bg-dark text-white" style="background-repeat: no-repeat; background-size: cover; height: 250px; " >
+			<div class="card-img-overlay" style="background-image: url('<%= @company.wallpaper_url %>');>" >
+			</div>	
+		</div>
+	</div>
+	
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<p class="lead"><%= @company.company_strapline %></p>
+
+		<p><%= simple_format(@company.company_description) %></p>	
+	</div>
+	<div class="col-md-2">
+		<img src="<%= @company.logo_url %>" class="company-logo">
+		<p><% if admin_user? %>Company User ID: <%= @company.user_id %> <% end %></p>
+		<h5><a href="http://<%= @company.company_url %>" target="_blank">www</a></h5>
+		<h5><a href="http://<%= @company.company_facebook %>" target="_blank">facebook</a></h5>
+		<h5><a href="http://<%= @company.company_twitter %>" target="_blank">twitter</a></h5>
+		<h5><a href="http://<%= @company.company_github %>" target="_blank">github</a></h5>
+	</div>
+</div>
+
+<% if current_user && (current_user.id == @company.user_id || admin_user?) %>
+	<div class="row">
+		<div class="col-md-8">
+			<hr />
+			<p><%= link_to 'Edit', edit_company_path(@company), class: "btn btn-xs btn-primary" %>  
+			<%= link_to 'Delete', company_path(@company), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %></p>
+			<hr />
+		</div>
+	</div>
+<% end %>
+
+
+<div class="row">
+	<div class="col-sm-8">
+	    <div class="card">
+	      <div class="card-body">
+	        <h4 class="card-title"><%= @company.company_name %> Job 1</h4>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <p class="card-text"><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></p>
+	        <a href="#" class="btn btn-warning">Go somewhere</a>
+	      </div>
+	    </div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-4">
+	    <div class="card">
+	      <div class="card-body">
+	        <h4 class="card-title"><%= @company.company_name %> Job 2</h4>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <p class="card-text"><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></p>
+	        <a href="#" class="btn btn-info">Go somewhere</a>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="col-sm-4">
+	    <div class="card">
+	      <div class="card-body">
+	        <h4 class="card-title"><%= @company.company_name %> Job 3</h4>
+	        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	        <p class="card-text"><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></p>
+	        <a href="#" class="btn btn-danger">Go somewhere</a>
+	      </div>
+	    </div>
+	</div>
+</div>
+
+

@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
-	belongs_to :user
-	has_many :jobs
+	validates_uniqueness_of :company_name
+
+	# belongs_to :user
 end
