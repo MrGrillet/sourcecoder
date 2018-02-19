@@ -40,4 +40,9 @@ module ApplicationHelper
 	 current_user.id
 	end
 
+		def company_id
+			@company_id = Company.find_by(user: current_user.id)[:id]
+			
+		end
+
 end

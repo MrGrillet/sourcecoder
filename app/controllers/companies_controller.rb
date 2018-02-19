@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
 	before_action :set_company, only: [:edit, :update, :show, :destroy]
+	
 
 	def index
 		@companies = Company.all
@@ -7,7 +8,7 @@ class CompaniesController < ApplicationController
 
 	def create
 		@company = Company.new(company_params)
-		@company.user_id = current_user
+		@company.user = current_user
 		if @company.save
 			flash[:success] = "Company was successfully created"
 			redirect_to company_path(@company)
@@ -23,7 +24,9 @@ class CompaniesController < ApplicationController
 	end
 
 	def destroy
-		
+		@company.destroy
+		flash[:danger] = "Company was deleted"
+		redirect_to companies_path
 	end
 
 	def update
@@ -48,6 +51,7 @@ class CompaniesController < ApplicationController
 			@company = Company.find(params[:id])
 		end
 
+		
 		def company_params
 			params.require(:company).permit(:company_name, :company_description, :company_url, :company_twitter, :company_facebook, :company_github, :user_id, :logo_url, :wallpaper_url, :company_strapline, :location )
 		end

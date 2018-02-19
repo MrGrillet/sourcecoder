@@ -10,6 +10,8 @@ class JobsController < ApplicationController
 	def new
 		@job = Job.new
 		@code_languages = CodeLanguage.all
+		@user_id = current_user
+		@company_id = Company.find_by(user_id: current_user)[:id]
 	end
 
 	def edit
@@ -20,6 +22,7 @@ class JobsController < ApplicationController
 	def create
 		@job = Job.new(job_params)
 		@job.user = current_user
+		@job.company_id = Company.find_by(user_id: current_user)[:id]
 		if @job.save
 			flash[:success] = "Job was successfully created"
 			redirect_to job_path(@job)
@@ -30,6 +33,12 @@ class JobsController < ApplicationController
 
 
 	def show
+		@company_name = Company.find(@job.company_id)[:company_name]
+		@company_url = Company.find(@job.company_id)[:company_url]
+		@company_github = Company.find(@job.company_id)[:company_github]
+		@company_facebook = Company.find(@job.company_id)[:company_facebook]
+		@company_twitter = Company.find(@job.company_id)[:company_twitter]
+		@company_logo = Company.find(@job.company_id)[:logo_url]
 	end
 
 	def update
@@ -54,9 +63,9 @@ class JobsController < ApplicationController
 		def set_job
 			@job = Job.find(params[:id])
 		end
-
+		
 		def job_params
-			params.require(:job).permit(:title, :description, :location, :salary, code_language_ids:[] )
+			params.require(:job).permit(:title, :description, :location, :salary, :company_id, :user, code_language_ids:[])
 		end
 
 end

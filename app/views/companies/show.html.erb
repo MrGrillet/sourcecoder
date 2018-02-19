@@ -20,7 +20,6 @@
 <div class="row">
 	<div class="col-md-6">
 		<p class="lead"><%= @company.company_strapline %></p>
-
 		<p><%= simple_format(@company.company_description) %></p>	
 	</div>
 	<div class="col-md-2">
@@ -38,7 +37,7 @@
 		<div class="col-md-8">
 			<hr />
 			<p><%= link_to 'Edit', edit_company_path(@company), class: "btn btn-xs btn-primary" %>  
-			<%= link_to 'Delete', company_path(@company), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %></p>
+			</p>
 			<hr />
 		</div>
 	</div>

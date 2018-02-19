@@ -1,5 +1,6 @@
 class Company < ApplicationRecord
 	validates_uniqueness_of :company_name
 
-	# belongs_to :user
+	belongs_to :user
+	validates :user_id, presence: true
 end

@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-5">
 		<h1><%= @job.title %></h1>
-		<p>at COMPANY NAME</p>
+		<p>at <%= @company_name %></p>
 	</div>
 	<div class="col-md-3">
 		<h5>Salary: £<%= @job.salary %></h5>
@@ -60,12 +60,19 @@
 
 <div class="row">
 	<div class="col-md-4">
-		<h3>Company Name</h3>
+		<h3><%= @company_name %></h3>
 		<p>I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing. The key is to drink coconut, fresh coconut, trust me. They never said winning was easy. Some people can’t handle success, I can.</p>
-		<p><a href="#">Learn more</a> | <a href="#">www</a> <a href="#">git</a> <a href="#">tw</a> <a href="#">fb</a></p>
+		<p><%= link_to 'Learn more', company_path(@job.company_id) %>
+
+
+			 | 
+			<a href="http://<%= @company_url %>" target="_blank" >www</a> 
+			<a href="http://<%= @company_github %>" target="_blank">git</a> 
+			<a href="http://<%= @company_twitter %>" target="_blank">tw</a> 
+			<a href="http://<%= @company_facebook %>" target="_blank">fb</a></p>
 	</div>
 	<div class="col-md-4">
-		<%= image_tag("phone.jpg", class: 'some-class', style: 'width: 100%; padding-top: 30px;' ) %>
+		<img src="<%= @company_logo %>" class="some-class" style="max-width: 200px; padding-top: 30px;" >
 	</div>
 </div>
 
