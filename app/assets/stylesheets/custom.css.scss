@@ -1575,8 +1575,10 @@ pre code {
 @media (min-width: 768px) {
   
   .card {
-    min-width: 500px;  
+    padding: 10px;  
   }
+
+
 
   .container {
 
@@ -2435,6 +2437,8 @@ table th[class*="col-"] {
   min-height: 0.01%;
 }
 @media screen and (max-width: 767px) {
+
+
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -4977,6 +4981,9 @@ a.badge:focus {
   max-width: 100%;
 }
 @media screen and (min-width: 768px) {
+
+
+
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
@@ -6413,6 +6420,7 @@ button.close {
   text-shadow: none;
 }
 @media screen and (min-width: 768px) {
+
   .carousel-control .glyphicon-chevron-left,
   .carousel-control .glyphicon-chevron-right,
   .carousel-control .icon-prev,
@@ -6679,11 +6687,22 @@ button.close {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
+.card {
+  padding: 50px;
+}
+
+
   .hidden-md {
     display: none !important;
   }
 }
 @media (min-width: 1200px) {
+.card {
+  padding: 50px;
+  margin: 10px 0px 10px 0px;
+}
+
+
   .hidden-lg {
     display: none !important;
   }
@@ -6736,10 +6755,6 @@ button.close {
   }
 }
 
-.card {
-  padding: 50px;
-  margin: 10px 0px 10px 0px;
-}
 
 
 
@@ -6750,7 +6765,7 @@ button.close {
 
 
 .col-lg-12  .card {
-  padding: 200px;
+  padding: 20px;
 }
 
 p, ul, ol {
@@ -6855,7 +6870,7 @@ a.btn-success {
  }
 
  .card-title {
-  margin-top: 15%;
+  margin-top: 10%;
  }
 
 
@@ -6876,4 +6891,25 @@ a.btn-success {
 
 .row {
  
+}
+
+.card {
+    margin: 10px 0px 10px 0px;
+    min-height: 300px;
+}
+
+@media (min-width: 576px) {
+.col-sm-4 {
+  width: 100%;
+  flex: 100%
+}
+
+}
+
+@media (min-width: 768px) {
+  .col-sm-4 {
+  width: 100%;
+  flex: 100%
+}
+
 }
