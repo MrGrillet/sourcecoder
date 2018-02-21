@@ -13,7 +13,7 @@
 	  		<% if employer? || admin_user? %>
 		  		<li class="nav-item dropdown">
 		  			<% if Company.find_by(user: current_user.id)  %>
-		  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
+		  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item btn-warning"  %>
 		  			<% else %>
 		  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
 		  			<% end %>	
@@ -22,21 +22,20 @@
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employer Menu</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Dashboard</a>
+				      <div class="dropdown-divider"></div>
 				      <% if Company.find_by(user: current_user.id)  %>
 		  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
+		  				<a class="dropdown-item" href="elements.html">Review Applications</a>
 		  			<% else %>
 		  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
 		  			<% end %>
 		  				
-				      <a class="dropdown-item" href="elements.html">Review Applications</a>
+				      
 				      <div class="dropdown-divider"></div>
 				      <% if Company.find_by(user: current_user.id)  %>
 		  				<%= link_to "Update Company Profile", edit_company_path(company_id), class: "dropdown-item"  %>
 		  			<% end %>
-				      
-
 				      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
-				      <a class="dropdown-item" href="#">Invite User</a>
 				    </div>
 		  		</li>
 		  	<% end %>
