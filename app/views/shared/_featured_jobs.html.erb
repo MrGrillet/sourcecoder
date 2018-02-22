@@ -1,31 +1,32 @@
 <div class="row">
-	<% @jobs[0..2].each do |job| %>
-	<% if job.featured == true %>
-	<% if Job.where(featured: true).count == 1 %>
-		<div class="col-md-12">
-	<% elsif Job.where(featured: true).count == 2 %>
-		<div class="col-md-6">
-	<% else %>
-		<div class="col-md-4">
-	<% end %>
-
-		<div class="card">
-	      	<div class="card-body">
-				<div class="pull-right"> <a class="btn btn-xs btn-warning" href="#">featured job</a></div>
-				<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
-				<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
-				<hr>	
-		        <p class="card-text">
-		        	<% job.code_languages.each do |lang| %>
-		  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a>
-	  				<% end %></p>
-	        	<% if current_user && (current_user.id == job.user_id || admin_user?) %>
-					<%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
-					<%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
-					<% end %>
-	      	</div>
-	    </div>
-	</div>
-	<% end %>
+	<% @jobs.each do |job| %>
+		<% if job.featured == true %>
+			<% if Job.where(featured: true).count == 1 %>
+				<div class="col-md-12">
+				<% elsif Job.where(featured: true).count == 2 %>
+					<div class="col-md-6">
+				<% else %>
+					<div class="col-md-4">
+			<% end %>
+			<div class="card">
+		      	<div class="card-body">
+		      		<% if job.featured == true %>
+						<div class="pull-right"> <a class="btn btn-xs btn-warning" href="#">featured</a></div>
+						<% end %>
+					<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
+					<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
+					<hr>	
+			        <p class="card-text">
+			        	<% job.code_languages.each do |lang| %>
+			  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a>
+		  				<% end %></p>
+		        	<% if current_user && (current_user.id == job.user_id || admin_user?) %>
+						<%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
+						<%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+						<% end %>
+		      		</div>
+		    	</div>
+			</div>		
+		<% end %>
 	<% end %>
 </div>

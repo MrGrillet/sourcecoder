@@ -40,6 +40,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def show
+		@jobs = Job.all
 		
 	end
 

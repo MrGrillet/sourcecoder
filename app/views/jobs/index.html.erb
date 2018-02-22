@@ -13,7 +13,9 @@
 	<div class="col-md-4">
 		<div class="card">
 	      	<div class="card-body">
-				<div class="right"> <img src=""> </div>
+	      		<% if job.featured == true %>
+					<div class="pull-right"> <a class="btn btn-xs btn-warning" href="#">featured</a></div>
+				<% end %>
 				<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
 				<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
 				<hr>	
