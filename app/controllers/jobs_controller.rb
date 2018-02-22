@@ -12,6 +12,7 @@ class JobsController < ApplicationController
 		@job = Job.new
 		@code_languages = CodeLanguage.all
 		@user_id = current_user
+		job_id = 2
 		@company_id = Company.find_by(user_id: current_user)[:id]
 	end
 

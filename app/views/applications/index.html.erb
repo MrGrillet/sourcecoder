@@ -1,0 +1,36 @@
+<h1>My Applications</h1>
+
+<p>If you are an employer, you will see a list of your jobs here</p>
+<p>If you are an applicant, you will see a list of the applications you have sent</p>
+
+
+<% if employer? || admin_user? %>
+<h2>Recent job applications</h2>
+	<ol>
+		<% @applications.each do |application| %>
+			<% if current_user.id == Job.find(application.job_id)[:user_id] %>
+			
+				<li> <%= User.find(application.user_id)[:first_name] %>'s application for <strong><%= Job.find(application.job_id)[:title] %></strong>
+				<%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %>  
+					<% if admin_user? %>
+							<%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %>
+							<%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %>
+						<% end %>
+					</li>
+			<% end %>
+		<% end %>
+	</ol>
+<% end %>
+
+<% if applicant? || admin_user? %>
+	<h2>Recent Applications (as an employee)</h2>
+		<ul>
+			<% @applications.each do |application| %>
+				<% if current_user.id == application.user_id %>
+					<li><%= link_to Job.find(application.job_id)[:title], application_path(application.id) %>  <%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %>
+						<%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %>
+						<%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></li>
+				<% end %>
+			<% end %>
+		</ul>
+<% end %>

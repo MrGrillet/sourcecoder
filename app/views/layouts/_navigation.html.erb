@@ -25,7 +25,7 @@
 				      <div class="dropdown-divider"></div>
 				      <% if Company.find_by(user: current_user.id)  %>
 		  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
-		  				<a class="dropdown-item" href="elements.html">Review Applications</a>
+		  				<%= link_to 'Review Applications', applications_path, class: "dropdown-item" %>	
 		  			<% else %>
 		  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
 		  			<% end %>
@@ -48,9 +48,10 @@
 		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Menu</a>
 				    <div class="dropdown-menu">
 				      <a class="dropdown-item" href="#">Dashboard</a>
-				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
+				      <%= link_to 'My Profile', profile_path(1), class: "dropdown-item" %>
+				      <%= link_to 'My Applications', applications_path, class: "dropdown-item" %>
 				      <div class="dropdown-divider"></div>
-				      <a class="dropdown-item" href="#">#</a>
+				      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
 				    </div>
 		  		</li>
 		  	<% end %>
@@ -61,8 +62,8 @@
 				    <div class="dropdown-menu">
 				      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
 				      <%= link_to 'Languages', code_languages_path, class: "dropdown-item" %>
-				      <%= link_to 'Companies', companies_path, class: "dropdown-item" %>
-				      <a class="dropdown-item" href="#">Users</a>
+				      <%= link_to 'Company Profiles', companies_path, class: "dropdown-item" %>
+				      <%= link_to 'Applicant Profiles', profiles_path, class: "dropdown-item" %>
 				      <a class="dropdown-item" href="#">Ads</a>
 				      <div class="dropdown-divider"></div>
 				      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
@@ -79,7 +80,8 @@
 	  		<% else %>
 
 	  			 <li class="nav-item">
-		    		<a class="nav-link" href="#">About</a>
+	  			 	<%= link_to 'About', about_path, class: "nav-link" %>
+		    		
 		  		</li>
 	  			 <li class="nav-item">
 					<%= link_to "View Jobs", jobs_path, class: ""%>

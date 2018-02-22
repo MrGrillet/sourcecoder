@@ -1085,7 +1085,7 @@ textarea {
 }
 a {
   color: #000000;
-  text-decoration: none;
+  text-decoration: underline; 
 }
 a:hover,
 a:focus {
@@ -3015,6 +3015,7 @@ select[multiple].input-lg {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  text-decoration: none;
 }
 .btn:focus,
 .btn:active:focus,
@@ -4954,7 +4955,7 @@ a.badge:focus {
  
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center bottom;
+  background-position: center top;
   height: 300px; 
 
   
@@ -6838,7 +6839,7 @@ p.card-caption {
   background-image: asset-url('brooke.jpg'); 
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center bottom;
+  background-position: center center;
 
 }
 
@@ -6869,10 +6870,6 @@ a.btn-success {
  color: #000;
  }
 
- .card-title {
-  margin-top: 10%;
- }
-
 
 .form-check-label {
     margin-top: 0px;
@@ -6895,7 +6892,7 @@ a.btn-success {
 
 .card {
     margin: 10px 0px 10px 0px;
-    min-height: 300px;
+  height: 300px;   
 }
 
 @media (min-width: 576px) {
@@ -6912,4 +6909,8 @@ a.btn-success {
   flex: 100%
 }
 
+}
+
+.navbar a {
+  text-decoration: none;
 }

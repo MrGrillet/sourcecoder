@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180219011333) do
+ActiveRecord::Schema.define(version: 20180222105314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: :cascade do |t|
+    t.integer "application_id"
+    t.string "application_title"
+    t.text "application_body"
+    t.string "profile_url"
+    t.boolean "profile_featured"
+    t.integer "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "youtube_url"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -64,6 +77,21 @@ ActiveRecord::Schema.define(version: 20180219011333) do
     t.integer "aplications"
     t.integer "company"
     t.date "start_date"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.text "profile_bio"
+    t.text "profile_objective"
+    t.text "profile_additional_notes"
+    t.string "profile_url"
+    t.string "profile_phone_number"
+    t.string "profile_twitter"
+    t.string "profile_facebook"
+    t.string "profile_github"
+    t.string "profile_linkedin"
+    t.boolean "profile_featured"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_jobs", force: :cascade do |t|

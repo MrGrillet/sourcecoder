@@ -40,27 +40,31 @@
 	<% @jobs.each do |job| %>
 	<div class="col-md-4">
 		<div class="card">
-	      <div class="card-body">
-		<div class="right"> <img src=""> </div>
-			<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
-			<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
-			<hr>	
-	        <p class="card-text">
-	        	<% job.code_languages.each do |lang| %>
-	  				<a href="#" class="btn btn-xs btn-secondary"><%= lang.name %></a>
-  				<% end %></p>
-	        <%= link_to 'View', job_path(job), class: "btn btn-success" %>
-	        <% if current_user && (current_user.id == job.user_id || admin_user?) %>
-				<%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %></td>
-				<%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
-			<% end %>
-	      </div>
+	      	<div class="card-body">
+				<div class="right"> <img src=""> </div>
+				<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
+				<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
+				<hr>	
+		        <p class="card-text">
+		        	<% job.code_languages.each do |lang| %>
+		  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a>
+	  				<% end %></p>
+	        	<% # link_to 'View', job_path(job), class: "btn btn-success" %>
+	        	<% if current_user && (current_user.id == job.user_id || admin_user?) %>
+					<%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
+					<%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+					<% end %>
+	      	</div>
 	    </div>
-	  </div>
-	<% end %>
 	</div>
+	<% end %>
 </div>
-
+<div class="row">
+	<div class="col-lg-12">
+		<hr />
+	</div>
+	
+</div>
 <% if !current_user %>
 	<div class="row">
 		<div class="col-lg-12">

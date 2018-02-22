@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-10 col-md-offset-2"> 
+		<h1>new application</h1>
+		<p>User ID: <%= current_user.id %></p>
+		<p>Job ID: <%= @job %></p>
+		<p>Job Title: <%= @job_title %></p>
+		<%= render 'shared/errors', obj: @application %>
+	</div>
+</div>
+
+<%= render 'form' %>
+

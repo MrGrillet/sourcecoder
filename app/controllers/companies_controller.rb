@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
 	before_action :set_company, only: [:edit, :update, :show, :destroy]
+	skip_before_action :authenticate_user!, only: [:show]
 	
 
 	def index
