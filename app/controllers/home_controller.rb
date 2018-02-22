@@ -3,5 +3,6 @@ class HomeController < ApplicationController
 	
   def index
   	@code_languages = CodeLanguage.all
+  	@jobs = Job.all
   end
 end

@@ -12,7 +12,6 @@ class JobsController < ApplicationController
 		@job = Job.new
 		@code_languages = CodeLanguage.all
 		@user_id = current_user
-		job_id = 2
 		@company_id = Company.find_by(user_id: current_user)[:id]
 	end
 
@@ -35,6 +34,7 @@ class JobsController < ApplicationController
 
 
 	def show
+		@jobs = Job.all
 		@company_name = Company.find(@job.company_id)[:company_name]
 		@company_url = Company.find(@job.company_id)[:company_url]
 		@company_github = Company.find(@job.company_id)[:company_github]
