@@ -6817,6 +6817,7 @@ a.btn-outline-light:hover  {
 
 img.bg-dark {
   background-color: rgba(0, 0, 0, 0.8);
+
 }
 
 .jumbotron {
@@ -6840,6 +6841,7 @@ p.card-caption {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  background-color: rgba(0, 0, 0, 0.8);
 
 }
 
@@ -6892,7 +6894,7 @@ a.btn-success {
 
 .card {
     margin: 10px 0px 10px 0px;
-  height: 300px;   
+  min-height: 300px;   
 }
 
 @media (min-width: 576px) {
@@ -6917,4 +6919,8 @@ a.btn-success {
 
 h4 {
       margin-top: 40px;
+}
+
+.large-card {
+  height: 600px;
 }

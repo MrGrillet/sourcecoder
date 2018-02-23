@@ -1,8 +1,8 @@
 <div class="row align-items-end">
 	<div class="col-lg-12">
-		<div class="jumbotron text-white" style="">
-			<h2 class="">Junior Devs :: Great Jobs</h2>
-	  		<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		<div class="jumbotron text-white" style="background-image: url(<%= asset_path 'junior-dev.jpg' %>); ">
+			<h2 class="">Junior Devs && Great Companies</h2>
+	  		<p class="lead">We connect people who want to build great websites and software</p>
 			<p class="">
 				<%= link_to "Explore Jobs", jobs_path, class: "btn btn-success" %>
 				<%= link_to "Find Devs", new_user_registration_path, class: "btn btn-outline-light" %>
@@ -13,7 +13,7 @@
 <div class="row justify-content-md-center">
   	<div class="col-md-2"></div>
   	<div class="col-md-8  text-center">
-		<p>Lorem Khaled Ipsum is a major key to success. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. Always remember in the jungle there’s a lot of they in there, after you overcome they, you will make it to paradise. Egg whites, turkey sausage, wheat toast, water. Of course they don’t want us to eat our breakfast, so we are going to enjoy our breakfast. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Eliptical talk</p>
+		<p>Finding your first role as a junior developer is a huge challenge. Once you're confident that you've picked up all the right languages and frameworks, the next step is signing up-to hundreds of platforms and applying for roles. Equally, from an employers perspective, sifting through the growing pool of candidates on hundreds of websites is frustrating, time consuming, so we've built a platform that simplifies the process</p>
 	</div>
 	<div class="col-md-2"></div>
 </div>
@@ -25,8 +25,7 @@
 		<div class="card align-items-center text-center" style="">
 		  <div class="card-body"  >
 		    <h2 class="card-title">Select your stack</h2>
-		    <p class="card-text text-center">With supporting text below as a natural lead-in to additional content.
-		    </p>
+		    <p class="card-text text-center">Click on your favouite language or framework to see our list of revelvant roles</p>
 		    <p class="card-text text-center">
 			    <% @code_languages.each do |lang| %>
 	  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
@@ -41,13 +40,16 @@
 	</div>
 </div>
 
+
+
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card bg-dark text-white" style="background-image: url(''); background-repeat: no-repeat; background-size: cover; height: 600px;" >
-			<div class="card-img-overlay" style="padding-top: 150px;" >
-				<h3 class="card-title" >Find your next role</h3>
-    			<p class="card-text card-caption">This is a wider card with supporting text below as a natural lead-in to additional content. This 	content is a little bit longer.</p>
-    				<%= link_to "Explore Jobs", jobs_path, class: "btn btn-success" %>
+		<div class="card bg-dark text-white large-card" >
+			<div class="card-img-overlay" style="background-image: url(<%= asset_path 'office-drk.png' %>); background-repeat: no-repeat; background-size: cover; " >
+				<h3 class="card-title" >Looking for the right Junior Developer?</h3>
+    			<p class="card-text card-caption">Signing up to sourceCoder allows you to get in front of thousands of junior developers who visit our site by publishing ads</p>
+    			<p class="card-text card-caption">You also get access to our searchable database of developers so you can contact them directly</p>
+    			<%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-warning sign-up' %>  <%= link_to "Learn more", hiring_path %>
 			</div>
 		</div>
 	</div>
@@ -76,11 +78,12 @@
 </div>
 <div class="row">
 	<div class="col-lg-12">
-		<div class="card bg-dark text-white"  >
-			<div class="card-img-overlay" style="background-image: url('/assets/window.jpg'); " >
-				<h3 class="card-title">Add your company</h3>
-				<p class="card-text card-caption">This is a wider card with supporting text below as a natural lead-in to additional content. This 	content is a little bit longer.</p>
-				<%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-warning sign-up' %>  <a href="#">Learn more</a>
+		<div class="card bg-dark text-white large-card"  >
+			<div class="card-img-overlay" style="background-image: url(<%= asset_path 'brooke.jpg' %>); " >
+				<h3 class="card-title">Ready to start making great products?</h3>
+				<p class="card-text card-caption">Ensure you are always visible to the hottest startups and development teams before they post their ads by creating a profile on sourceCoder. 
+				<p class="card-text card-caption">You'll also get access to all of our listings so you can submit applications.</p>
+				<%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success sign-up' %> <%= link_to "Learn more", applying_path %>
 			</div>
 		</div>
 	</div>

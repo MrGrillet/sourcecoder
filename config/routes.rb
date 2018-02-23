@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'pricing', to: 'pages#pricing'
   get 'privacy', to: 'pages#privacy'
   get 'terms', to: 'pages#terms'
+  get 'hiring', to: 'pages#hiring'
+  get 'applying', to: 'pages#applying'
 
 
   resources :user_jobs, only: [:create]
