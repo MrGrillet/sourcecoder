@@ -1,31 +1,66 @@
-<h1>My Applications</h1>
+<h1>Applications</h1>
 <% if employer? || admin_user? %>
-<h2>Recent job applications</h2>
-	<ol>
-		<% @applications.each do |application| %>
-			<% if current_user.id == Job.find(application.job_id)[:user_id] %>
-			
-				<li> <%= User.find(application.user_id)[:first_name] %>'s application for <strong><%= Job.find(application.job_id)[:title] %></strong>
-				<%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %>  
-					<% if admin_user? %>
-							<%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %>
-							<%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %>
-						<% end %>
-					</li>
-			<% end %>
-		<% end %>
-	</ol>
-<% end %>
-
-<% if applicant? || admin_user? %>
-	<h2>Recent Applications (as an employee)</h2>
-		<ul>
-			<% @applications.each do |application| %>
-				<% if current_user.id == application.user_id %>
-					<li><%= link_to Job.find(application.job_id)[:title], application_path(application.id) %>  <%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %>
-						<%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %>
-						<%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></li>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Recent job applications</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+			<table>
+				<% if admin_user? %>
+					<tr>
+						<th>title</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>creator id</th>
+						<th>job id</th>
+						<th>user id</th>
+					</tr>
 				<% end %>
-			<% end %>
-		</ul>
+				<% @applications.each do |application| %>
+					<% if current_user.id == Job.find(application.job_id)[:user_id] %>
+						<tr>
+							<td style="width: 100%;"><%= application.user_id %>. <%= User.find(application.user_id)[:first_name] %>'s application for <strong><%= Job.find(application.job_id)[:title] %></strong></td>
+							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %>  </td>
+							<% if admin_user? %>
+								<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %></td>
+								<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+								<td><%= application.user_id %></td>
+								<td><%= application.job_id %></td>
+								<td><%= application.user_id %></td>
+							<% end %>
+						</tr>
+					<% end %>
+				<% end %>
+			</table>		
+		</div>
+	</div>
+<% end %>
+<% if applicant? || admin_user? %>
+	<div class="row">
+		<div class="col-md-12">		
+			<h2>Recent Applications <% if admin_user? %>(as an employee)<% end %></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+			<table>
+				<% @applications.each do |application| %>
+					<% if current_user.id == application.user_id %>
+						<tr>
+							<td style="width: 100%;"><%= application.job_id %>. <%= Job.find(application.job_id)[:title] %></td>
+							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %></td>
+							<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %></td>
+							<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+						</tr>					
+					<% end %>
+				<% end %>
+			</table>	
+		</div>	
+		<div class="col-md-3">
+			<p>This could be an ad space of some kind</p>
+		</div>
+	</div>
 <% end %>

@@ -1,28 +1,42 @@
 <div class="row">
 	<div class="col-md-8">
 		<% if @job.featured == true %> <a href="#" class="btn btn-xs btn-warning">Featured Listing</a><% end %>
-	<br />
-
+		<br />
 		<h1><%= @job.title %></h1>
 		<p>at <%= @company_name %> | <%= @job.location %></p>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-5">
 		<% @job.code_languages.each do |lang| %>
 	  		<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
   		<% end %>
-	</div>
-	<div class="col-md-3">
+		<h4>Salary: £<%= @job.salary %></h4>
 		<h5>Start Date: </h5>
 		<h5>Posted Date: </h5>
+		<p><%= simple_format(@job.description) %></p>
+		<hr />
+	</div>
+	<div class="col-md-4">
+		<% @jobs[0..2].each do |job| %>
+			<% if job.featured == true %>
+					<div class="card">
+				      	<div class="card-body">
+							<div class="pull-right"> <a class="btn btn-xs btn-warning" href="#">featured</a></div>
+							<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
+							<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
+							<hr>	
+					        <p class="card-text">
+					        	<% job.code_languages.each do |lang| %>
+					  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a>
+				  				<% end %></p>
+				        		<% if current_user && (current_user.id == job.user_id || admin_user?) %>
+									<%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
+									<%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+							<% end %>
+				      	</div>
+				    </div>
+			<% end %>
+		<% end %>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-8">
-		<p><%= simple_format(@job.description) %></p>
-		<h4>Salary: £<%= @job.salary %></h4>	
-	</div>
 	<div class="col-md-8">
 		<%if  @job.the_role.present? %>
 			<h4>What you will be doing on a daily basis...</h4>
@@ -49,53 +63,25 @@
 			<p><%= simple_format(@job.benefits) %></p>	
 		<% end %>
 	</div>
-	<div class="col-md-4">
-		<% @jobs[0..2].each do |job| %>
-			<% if job.featured == true %>
-					<div class="card">
-				      	<div class="card-body">
-							<div class="pull-right"> <a class="btn btn-xs btn-warning" href="#">featured</a></div>
-							<h4 class="card-title"><%= link_to job.title, job_path(job) %></h4>
-							<small><strong><%= Company.find(job.company_id).company_name %></strong>, <%= job.location %></small> <br/ >
-							<hr>	
-					        <p class="card-text">
-					        	<% job.code_languages.each do |lang| %>
-					  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a>
-				  				<% end %></p>
-				        	<% if current_user && (current_user.id == job.user_id || admin_user?) %>
-								<%= link_to 'Edit', edit_job_path(job), class: "btn btn-xs btn-info" %>
-								<%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
-								<% end %>
-				      	</div>
-				    </div>
-			<% end %>
-		<% end %>
-	</div>
-</div>
 
+</div>
 <% if current_user && (current_user.id == @job.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
 			<hr />
 			<p><%= link_to 'Edit', edit_job_path(@job), class: "btn btn-xs btn-primary" %>  
 			<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %></p>
-			
 		</div>
 	</div>
 <% end %>
-
 <div class="row">
 	<div class="col-md-8">
 		<hr />
 	</div>
 	<div class="col-md-6">
-		
 		<h3><%= @company_name %></h3>
 		<p>I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing. The key is to drink coconut, fresh coconut, trust me. They never said winning was easy. Some people can’t handle success, I can.</p>
-		<p><%= link_to 'Learn more', company_path(@job.company_id) %>
-
-
-			 | 
+		<p><%= link_to 'Learn more', company_path(@job.company_id) %> | 
 			<a href="http://<%= @company_url %>" target="_blank" >www</a> 
 			<a href="http://<%= @company_github %>" target="_blank">git</a> 
 			<a href="http://<%= @company_twitter %>" target="_blank">tw</a> 
@@ -105,14 +91,12 @@
 		<img src="<%= @company_logo %>" class="some-class" style="max-width: 150px; padding-top: 30px;" >
 	</div>
 </div>
-
-	<div class="row">
-		<div class="col-md-8 ">
-			<hr />
-			<% if !employer? %>
-			
+<div class="row">
+	<div class="col-md-8 ">
+		<hr />
+		<% if !employer? %>
 			<%= link_to "Apply Now", new_application_path(:job_id => params[:id]), class: "btn btn-lg btn-success" %>
-			<% end %>
-			<%= link_to "Back to job listings", jobs_path, class: "btn btn-info" %>
-		</div>
+		<% end %>
+		<%= link_to "Back to job listings", jobs_path, class: "btn btn-info" %>
 	</div>
+</div>

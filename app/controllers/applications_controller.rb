@@ -4,7 +4,6 @@ class ApplicationsController < ApplicationController
 
 	def index
 		@applications = Application.all
-		# @application_name = Job.find(56)[:title]
 	end
 
 	
@@ -12,10 +11,7 @@ class ApplicationsController < ApplicationController
 		@job_title = Job.find(@job)[:title]
 		@job_id = Job.find(@job)[:id]
 		@user_id = current_user.id
-		
-		
 		@application = Application.new
-
 	end
 		
 	def create
@@ -30,12 +26,14 @@ class ApplicationsController < ApplicationController
 	end
 
 	def edit
+		@applications = Application.all
 	end
 
 	def update
+		@user_id = current_user.id
 		if @application.update(application_params)
 			flash[:success] = "Your application was successfully updated"
-			redirect_to application_path(@application)
+			redirect_to applications_path
 		else
 			render 'edit'
 		end
@@ -48,7 +46,6 @@ class ApplicationsController < ApplicationController
 		@application.destroy
 		flash[:danger] = "Application deleted"
 		redirect_to applications_path
-		
 	end
 
 	private 
