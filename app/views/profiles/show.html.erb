@@ -53,9 +53,10 @@
 <div class="row">
 		<div class="col-md-9">
 			<hr />
-			<p><%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-xs btn-primary" %> 
+			<% if current_user.id == @profile.user_id %>
+			<p><%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-xs btn-primary" %> <% end %>
 			<% if admin_user? || employer? %>
-				 | <%= link_to 'Back to all users', profiles_path %>
+				  <%= link_to 'Back to applications', applications_path %>
 			<% end %>
 			</p>
 		</div>

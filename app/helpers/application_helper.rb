@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+	def current_user_profile_id
+		the_profile = Profile.find_by(user_id: current_user.id)
+		@current_user_profile_id = the_profile.id
+	end
+
 	def admin_user?
 		if current_user && current_user.user_type == "admin"
 			true

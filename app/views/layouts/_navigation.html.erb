@@ -1,5 +1,5 @@
-<% if admin_user? %>
-			<small> Currently logged in as <%= current_user.first_name %> who is an: <%= current_user.user_type %> </small>
+<% if current_user %>
+			<small> Currently logged in as <%= current_user.first_name %> who is an: <%= current_user.user_type %>. User ID: <%= current_user.id %></small>
 <% end %>
 
 
@@ -29,7 +29,7 @@
 					    <div class="dropdown-menu">
 					      <%= link_to "Search Profiles", profiles_path, class: "dropdown-item" %>
 					      <div class="dropdown-divider"></div>
-					      <% if Company.find_by(user: current_user.id)  %>
+					      <% if Company.find_by(user: current_user.id) %>
 			  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
 			  				<%= link_to 'Review Applications', applications_path, class: "dropdown-item" %>	
 			  			<% else %>
@@ -60,8 +60,9 @@
 			    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Menu</a>
 					    <div class="dropdown-menu">
 					      <a class="dropdown-item" href="#">Dashboard</a>
-					      <% if Profile.find_by(user_id: current_user.id)  %>
-					      	 <%= link_to 'My Profile', profile_path(current_user.id), class: "dropdown-item" %>
+					      
+					      <% if Profile.find_by(user_id: current_user.id) %>
+					      	 <%= link_to 'My Profile', profile_path(current_user_profile_id), class: "dropdown-item" %>
 					      <% end %>
 					      <%= link_to 'My Applications', applications_path, class: "dropdown-item" %>
 					      <div class="dropdown-divider"></div>

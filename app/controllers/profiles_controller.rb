@@ -25,6 +25,12 @@ class ProfilesController < ApplicationController
 
 
 	def show
+
+		if User.find(current_user.id) == "applicant"
+			@profile = current_user.id
+			user_id = current_user.id
+		end
+		
 	end
 
 	def update

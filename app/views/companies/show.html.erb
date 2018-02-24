@@ -11,6 +11,8 @@
 		</div>
 	</div>
 	<% elsif @company.wallpaper_url.present? %>
+	<div class="row">
+		<div class="col-md-9">
 		  	<div class="card bg-dark text-white" style="background-repeat: no-repeat; background-size: cover; height: 250px; " >
 				<div class="card-img-overlay" style="background-image: url('<%= @company.wallpaper_url %>');>" >
 				</div>	
