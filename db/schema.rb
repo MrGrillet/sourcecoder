@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180224093405) do
+ActiveRecord::Schema.define(version: 20180224112822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20180224093405) do
     t.string "wallpaper_url"
     t.string "company_strapline"
     t.boolean "featured"
+    t.string "company_youtube"
   end
 
   create_table "job_languages", force: :cascade do |t|

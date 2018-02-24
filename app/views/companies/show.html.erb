@@ -1,23 +1,25 @@
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-9">
 		<h1><%= @company.company_name %></h1>
 		<p><%= @company.location %></p> 
 	</div>
-	<div class="col-md-2">
-		
-	</div>
 </div>
-<div class="row">
-	<div class="col-md-8">
-	  <div class="card bg-dark text-white" style="background-repeat: no-repeat; background-size: cover; height: 250px; " >
-			<div class="card-img-overlay" style="background-image: url('<%= @company.wallpaper_url %>');>" >
-			</div>	
+<% if @company.company_youtube.present? %>
+	<div class="row">
+		<div class="col-md-9">
+				<iframe width="100%" height="415" src="https://www.youtube.com/embed/<%= @company.company_youtube %>?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 		</div>
 	</div>
-	
-</div>
+	<% elsif @company.wallpaper_url.present? %>
+		  	<div class="card bg-dark text-white" style="background-repeat: no-repeat; background-size: cover; height: 250px; " >
+				<div class="card-img-overlay" style="background-image: url('<%= @company.wallpaper_url %>');>" >
+				</div>	
+			</div>
+		</div>
+	</div>
+<% end %>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-7">
 		<p class="lead"><%= @company.company_strapline %></p>
 		<p><%= simple_format(@company.company_description) %></p>
 		<hr />
@@ -45,7 +47,7 @@
 <% end %>
 
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-9">
 		<h3>Jobs at <%= @company.company_name %></h3>
 	</div>
 	<% @jobs[0..2].each do |job| %>
@@ -70,7 +72,6 @@
 	    </div>
 	</div>
 	<% end %>
-
 </div>
 
 

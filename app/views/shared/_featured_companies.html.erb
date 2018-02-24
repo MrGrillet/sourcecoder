@@ -1,0 +1,29 @@
+<div class="row">
+	<% Company.all.each do |company| %>
+		<% if company.featured == true %>
+			<% if Company.where(featured: true).count == 1 %>
+				<div class="col-md-12">
+				<% elsif Company.where(featured: true).count == 2 %>
+					<div class="col-md-6">
+				<% else %>
+					<div class="col-md-4">
+			<% end %>
+			<div class="card">
+		      	<div class="card-body">
+		      		<% if company.featured == true %>
+						<div class="pull-right"> <a class="btn btn-xs btn-warning" href="#">featured</a></div>
+						<% end %>
+					<h4 class="card-title"><%= link_to company.company_name, company_path(company) %></h4>
+					<p class="card-text"><%= company.company_strapline %></p>
+						<small><%= company.location %></small> <br/ >
+					<hr>	
+		        	<% if current_user && (current_user.id == company.user_id || admin_user?) %>
+						<%= link_to 'Edit', edit_company_path(company), class: "btn btn-xs btn-info" %>
+						</td>
+						<% end %>
+		      		</div>
+		    	</div>
+			</div>		
+		<% end %>
+	<% end %>
+</div>
