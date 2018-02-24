@@ -8,28 +8,14 @@
 	<div class="row">
 		<div class="col-md-9">
 			<table>
-				<% if admin_user? %>
-					<tr>
-						<th>title</th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th>creator id</th>
-						<th>job id</th>
-						<th>user id</th>
-					</tr>
-				<% end %>
 				<% @applications.each do |application| %>
 					<% if current_user.id == Job.find(application.job_id)[:user_id] %>
 						<tr>
 							<td style="width: 100%;"><%= application.user_id %>. <%= User.find(application.user_id)[:first_name] %>'s application for <strong><%= Job.find(application.job_id)[:title] %></strong></td>
 							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %>  </td>
 							<% if admin_user? %>
-								<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %></td>
+								<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-info" %></td>
 								<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
-								<td><%= application.user_id %></td>
-								<td><%= application.job_id %></td>
-								<td><%= application.user_id %></td>
 							<% end %>
 						</tr>
 					<% end %>
@@ -52,7 +38,7 @@
 						<tr>
 							<td style="width: 100%;"><%= Job.find(application.job_id)[:title] %></td>
 							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %></td>
-							<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %></td>
+							<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-info" %></td>
 							<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
 						</tr>					
 					<% end %>
@@ -82,7 +68,7 @@
 						<tr>
 							<td style="width: 100%;"><%= job.title %></td>
 							<td><%= link_to 'View', job_path(job), class: "btn btn-xs btn-primary" %></td>
-							<td><%= link_to 'Edit', edit_job_path(job.id), class: "btn btn-xs btn-primary" %></td>
+							<td><%= link_to 'Edit', edit_job_path(job.id), class: "btn btn-xs btn-info" %></td>
 							<td><%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
 						</tr>					
 					<% end %>

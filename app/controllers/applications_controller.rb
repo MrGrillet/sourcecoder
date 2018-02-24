@@ -43,7 +43,7 @@ class ApplicationsController < ApplicationController
 
 	def show
 		@applicant = User.find(@application.user_id)
-		@applicant_profile = Profile.find(@application.user_id)
+		@applicant_profile = Profile.find_by(user_id: @application.user_id)
 	end
 
 	def destroy
