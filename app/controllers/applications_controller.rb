@@ -4,11 +4,13 @@ class ApplicationsController < ApplicationController
 
 	def index
 		@applications = Application.all
+		@jobs = Job.all
 	end
 
 	
 	def new
 		@job_title = Job.find(@job)[:title]
+		@job_description = Job.find(@job)[:description]
 		@job_id = Job.find(@job)[:id]
 		@user_id = current_user.id
 		@application = Application.new
@@ -40,6 +42,8 @@ class ApplicationsController < ApplicationController
 	end
 
 	def show
+		@applicant = User.find(@application.user_id)
+		@applicant_profile = Profile.find(@application.user_id)
 	end
 
 	def destroy

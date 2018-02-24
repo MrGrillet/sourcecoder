@@ -1,12 +1,21 @@
 <div class="row">
 	<div class="col-md-8">
 		<h1>All Job Listings</h1>
+  		<% if current_user && !Profile.find_by(user_id: current_user.id) && !employer? %>
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h2 class="panel-title">Warning</h2>
+				</div>
+				<div class="panel-body">
+					<p>You need to create a profile before you can appy for jobs</p>
+				</div>
+			</div>
+		<% end %>
 		<p>Lorem Khaled Ipsum is a major key to success. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. Always remember in the jungle there’s a lot of they in there, after you overcome they, you will make it to paradise. Egg whites, turkey sausage, wheat toast, water. Of course they don’t want us to eat our breakfast, so we are going to enjoy our breakfast. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Eliptical talk
 		</p>
 	</div>
 </div>
 <%= render 'shared/featured_jobs' %>
-
 <div class="row">
 	<% @jobs.each do |job| %>
 	<div class="col-md-4">
@@ -36,7 +45,6 @@
 	<div class="col-lg-12">
 		<hr />
 	</div>
-	
 </div>
 <% if !current_user %>
 	<div class="row">
@@ -50,7 +58,7 @@
 			</div>
 		</div>
 	</div>
-	<% elsif current_user && ( employer? || admin_user? ) %>
+<% elsif current_user && ( employer? || admin_user? ) %>
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="card bg-dark text-white" style=" background-color: #000; height: 220px;">
@@ -68,40 +76,7 @@
 			</div>
 		</div>	
 	<% else %>	
-		 <div class="row">
-			<div class="col-md-8 offset-2 text-center">
-		  		<h2>Featured Listings</h2>
-			</div>
-		<div class="col-sm-4">
-		    <div class="card">
-		      <div class="card-body">
-		        <h4 class="card-title">Job title one</h4>
-		        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-		        <p class="card-text"><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></p>
-		        <a href="#" class="btn btn-warning">Go somewhere</a>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-4">
-		    <div class="card">
-		      <div class="card-body">
-		        <h4 class="card-title">Job title two</h4>
-		        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-		        <p class="card-text"><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></p>
-		        <a href="#" class="btn btn-info">Go somewhere</a>
-		      </div>
-		    </div>
-		  </div>
-		  <div class="col-sm-4">
-		    <div class="card">
-		      <div class="card-body">
-		        <h4 class="card-title">Job title three</h4>
-		        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-		        <p class="card-text"><a href="#" class="btn btn-xs btn-primary">HTML</a> <a href="#" class="btn btn-xs btn-primary">CSS</a> <a href="#" class="btn btn-xs btn-primary">Ruby</a> <a href="#" class="btn btn-xs btn-primary">Rails</a></p>
-		        <a href="#" class="btn btn-danger">Go somewhere</a>
-		      </div>
-		    </div>
-		</div>
-	</div>
+		 <%= render 'shared/featured_jobs' %>
 <% end %>
-<hr>
+
+

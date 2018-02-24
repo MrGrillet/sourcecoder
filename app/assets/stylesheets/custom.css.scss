@@ -6894,23 +6894,21 @@ a.btn-success {
 
 .card {
     margin: 10px 0px 10px 0px;
-  min-height: 300px;   
+    min-height: 350px;   
 }
 
 @media (min-width: 576px) {
-.col-sm-4 {
-  width: 100%;
-  flex: 100%
-}
-
+  .col-sm-4 {
+    width: 100%;
+    flex: 100%
+  }
 }
 
 @media (min-width: 768px) {
-  .col-sm-4 {
-  width: 100%;
-  flex: 100%
-}
-
+    .col-sm-4 {
+    width: 100%;
+    flex: 100%
+  }
 }
 
 .navbar a {
@@ -6918,7 +6916,7 @@ a.btn-success {
 }
 
 h4 {
-      margin-top: 40px;
+  margin-top: 40px;
 }
 
 .large-card {
@@ -6927,5 +6925,4 @@ h4 {
 
 .kpi-number {
   font-size: 90px;
-
 }

@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-9">
-		<h1><%= User.find(@application.user_id)[:first_name] %>'s application</h1>
+		<h1><%= User.find(@application.user_id)[:first_name] %> <%= User.find(@application.user_id)[:last_name] %>'s application</h1>
 		<small>for <%= Job.find(@application.job_id)[:title] %></small>
 	</div>
 </div>
@@ -13,16 +13,38 @@
 <% end %>
 <div class="row">
 	<div class="col-md-9">
-		<h3>What <%= User.find(@application.user_id)[:first_name] %> had to say...</h3>
+		<h3>What <%= @applicant.first_name %> had to say...</h3>
 		<%= simple_format(@application.application_body) %>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-9">
-		<% if current_user.id == @application.user_id %>
-			<%= link_to 'Edit', edit_application_path(@application) %> | 
-			<%= link_to 'Delete', application_path(@application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %> | 
-		<% end %>	
+		<hr />
+		<h3><%= @applicant.first_name %>'s profile</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-7">
+		<p><%= simple_format(@applicant_profile.profile_objective) %></p>
+		<p>
+			<%= link_to "Learn more", profile_path(@applicant_profile.id) %> |
+			<a href="http://<%= @applicant_profile.profile_url %>" target="_blank">www</a> | 
+			<a href="http://<%= @applicant_profile.profile_twitter %>" target="_blank">twitter</a> | 
+			<a href="http://<%= @applicant_profile.profile_github %>" target="_blank">github</a>
+		</p>
+	</div>
+	<div class="col-md-2">
+		<img src="<%= @applicant_profile.profile_image %>" class="company-logo">
+		<p><% if admin_user? %>User ID: <%= @applicant_profile.user_id %> <% end %></p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-9">
+		<hr />
+			<% if current_user.id == @application.user_id %>
+				<%= link_to 'Edit', edit_application_path(@application) %> | 
+				<%= link_to 'Delete', application_path(@application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %> | 
+			<% end %>	
 		<%= link_to "Cancel and return to all applications", applications_path %>
 	</div>
 </div>

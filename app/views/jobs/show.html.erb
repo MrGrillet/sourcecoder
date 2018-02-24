@@ -1,5 +1,16 @@
 <div class="row">
 	<div class="col-md-8">
+		<% if current_user && !Profile.find_by(user_id: current_user.id) && !employer? %>
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h2 class="panel-title">Warning</h2>
+				</div>
+				<div class="panel-body">
+					<p>You need to create a profile before you can appy for jobs</p>
+				</div>
+			</div>
+		<% end %>
+
 		<% if @job.featured == true %> <a href="#" class="btn btn-xs btn-warning">Featured Listing</a><% end %>
 		<br />
 		<h1><%= @job.title %></h1>
@@ -93,8 +104,13 @@
 <div class="row">
 	<div class="col-md-8 ">
 		<hr />
-		<% if !employer? %>
+		<% if !employer? %> 
+			<% if current_user && !Profile.find_by(user_id: current_user.id) && !employer? %>
+				<p>Please complete your profile to be able to apply for this role</p>
+				<br />
+			<% else %>
 			<%= link_to "Apply Now", new_application_path(:job_id => params[:id]), class: "btn btn-lg btn-success" %>
+		<% end %>
 		<% end %>
 		<%= link_to "Back to job listings", jobs_path, class: "btn btn-info" %>
 	</div>

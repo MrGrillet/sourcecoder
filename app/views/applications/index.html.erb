@@ -50,7 +50,7 @@
 				<% @applications.each do |application| %>
 					<% if current_user.id == application.user_id %>
 						<tr>
-							<td style="width: 100%;"><%= application.job_id %>. <%= Job.find(application.job_id)[:title] %></td>
+							<td style="width: 100%;"><%= Job.find(application.job_id)[:title] %></td>
 							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn-primary" %></td>
 							<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-primary" %></td>
 							<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
@@ -59,8 +59,40 @@
 				<% end %>
 			</table>	
 		</div>	
-		<div class="col-md-3">
-			<p>This could be an ad space of some kind</p>
+		<% if admin_user? %>
+			<div class="col-md-3">
+				<p>This could be an ad space of some kind</p>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
+
+<% if employer? || admin_user? %>
+	<div class="row">
+		<div class="col-md-12">		
+			<h2>Recent Job Ads</h2>
 		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+			<table>
+				<% @jobs.each do |job| %>
+					<% if current_user.id == job.user_id %>
+						<tr>
+							<td style="width: 100%;"><%= job.title %></td>
+							<td><%= link_to 'View', job_path(job), class: "btn btn-xs btn-primary" %></td>
+							<td><%= link_to 'Edit', edit_job_path(job.id), class: "btn btn-xs btn-primary" %></td>
+							<td><%= link_to 'Delete', job_path(job), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+						</tr>					
+					<% end %>
+				<% end %>
+			</table>	
+		</div>	
+		<% if admin_user? %>
+			<div class="col-md-3">
+				<p>This could be an ad space of some kind</p>
+			</div>
+		<% end %>
 	</div>
 <% end %>

@@ -6,70 +6,76 @@
 		<%= link_to "sourceCoder", root_path, class: "navbar-brand", id: "logo" %>
 		<ul class="nav nav-pills pull-right">
 			<% if current_user %>
+		  		<% if employer? || admin_user? %>
+			  		<li class="nav-item dropdown">
+			  			<% if Company.find_by(user: current_user.id)  %>
+			  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item btn-warning"  %>
+			  			<% else %>
+			  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
+			  			<% end %>	
+			  		</li>
+			  		<li class="nav-item dropdown">
+			    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employer Menu</a>
+					    <div class="dropdown-menu">
+					      <%= link_to "Search Profiles", profiles_path, class: "dropdown-item" %>
+					      <div class="dropdown-divider"></div>
+					      <% if Company.find_by(user: current_user.id)  %>
+			  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
+			  				<%= link_to 'Review Applications', applications_path, class: "dropdown-item" %>	
+			  			<% else %>
+			  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
+			  			<% end %>
+					      <div class="dropdown-divider"></div>
+					      <% if Company.find_by(user: current_user.id)  %>
+			  				<%= link_to "Update Company Profile", edit_company_path(company_id), class: "dropdown-item"  %>
+			  			<% end %>
+					      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
+					    </div>
+			  		</li>
+			  	<% end %>
 
-	  		<% if employer? || admin_user? %>
-		  		<li class="nav-item dropdown">
-		  			<% if Company.find_by(user: current_user.id)  %>
-		  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item btn-warning"  %>
-		  			<% else %>
-		  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
-		  			<% end %>	
-		  		</li>
-		  		<li class="nav-item dropdown">
-		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Employer Menu</a>
-				    <div class="dropdown-menu">
-				      <a class="dropdown-item" href="#">Dashboard</a>
-				      <div class="dropdown-divider"></div>
-				      <% if Company.find_by(user: current_user.id)  %>
-		  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
-		  				<%= link_to 'Review Applications', applications_path, class: "dropdown-item" %>	
-		  			<% else %>
-		  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
-		  			<% end %>
-		  				
-				      
-				      <div class="dropdown-divider"></div>
-				      <% if Company.find_by(user: current_user.id)  %>
-		  				<%= link_to "Update Company Profile", edit_company_path(company_id), class: "dropdown-item"  %>
-		  			<% end %>
-				      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
-				    </div>
-		  		</li>
-		  	<% end %>
+			  	<% if applicant? || admin_user? %>
+			  		<li class="nav-item dropdown">
+			  			<% if !Profile.find_by(user_id: current_user.id)  %>
+			  				<%= link_to "Create Profile", new_profile_path, class: "dropdown-item btn-warning"  %>
+			  			<% end %>	
+			  		</li>
+			  	<li class="nav-item">
+						<%= link_to "Jobs", jobs_path, class: ""%>
+			  		</li>
+			  		<li class="nav-item">
+						<%= link_to "Companies", companies_path, class: ""%>
+		  			</li>
+			  		<li class="nav-item dropdown">
+			    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Menu</a>
+					    <div class="dropdown-menu">
+					      <a class="dropdown-item" href="#">Dashboard</a>
+					      <% if Profile.find_by(user_id: current_user.id)  %>
+					      	 <%= link_to 'My Profile', profile_path(current_user.id), class: "dropdown-item" %>
+					      <% end %>
+					      <%= link_to 'My Applications', applications_path, class: "dropdown-item" %>
+					      <div class="dropdown-divider"></div>
+					      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
+					    </div>
+			  		</li>
+			  	<% end %>
 
-		  	<% if applicant? || admin_user? %>
-		  	<li class="nav-item">
-					<%= link_to "View Jobs", jobs_path, class: ""%>
-		  		</li>
-		  		<li class="nav-item dropdown">
-		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Applicant Menu</a>
-				    <div class="dropdown-menu">
-				      <a class="dropdown-item" href="#">Dashboard</a>
-				      <%= link_to 'My Profile', profile_path(1), class: "dropdown-item" %>
-				      <%= link_to 'My Applications', applications_path, class: "dropdown-item" %>
-				      <div class="dropdown-divider"></div>
-				      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
-				    </div>
-		  		</li>
-		  	<% end %>
-
-		  	<% if admin_user? %>
-			  	<li class="nav-item dropdown">
-		    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
-				    <div class="dropdown-menu">
-				      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
-				      <%= link_to 'Languages', code_languages_path, class: "dropdown-item" %>
-				      <%= link_to 'Company Profiles', companies_path, class: "dropdown-item" %>
-				      <%= link_to 'Applicant Profiles', profiles_path, class: "dropdown-item" %>
-				      <a class="dropdown-item" href="#">Ads</a>
-				      <div class="dropdown-divider"></div>
-				      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
-				      <div class="dropdown-divider"></div>
-				      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
-				    </div>
-		  		</li>
-	  		<% end %>
-
+			  	<% if admin_user? %>
+				  	<li class="nav-item dropdown">
+			    		<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Admin</a>
+					    <div class="dropdown-menu">
+					      <%= link_to "Dashboard", admin_path, class: "dropdown-item" %>
+					      <%= link_to 'Languages', code_languages_path, class: "dropdown-item" %>
+					      <%= link_to 'Company Profiles', companies_path, class: "dropdown-item" %>
+					      <%= link_to 'Applicant Profiles', profiles_path, class: "dropdown-item" %>
+					      <a class="dropdown-item" href="#">Ads</a>
+					      <div class="dropdown-divider"></div>
+					      <%= link_to "All elements", admin_elements_path, class: "dropdown-item" %>
+					      <div class="dropdown-divider"></div>
+					      <%= link_to 'Update Profile', edit_user_registration_path, class: "dropdown-item" %>
+					    </div>
+			  		</li>
+		  		<% end %>
 	  			<li class="nav-item">
 	  				<%= link_to('Logout', destroy_user_session_path, class: 'nav-link', title: 'Logout', :method => :delete) %>
 	  			 </li>
@@ -78,7 +84,10 @@
 	  			 	<%= link_to 'About', about_path, class: "nav-link" %>	
 		  		</li>
 	  			 <li class="nav-item">
-					<%= link_to "View Jobs", jobs_path, class: ""%>
+					<%= link_to "Jobs", jobs_path, class: ""%>
+		  		</li>
+	  			 <li class="nav-item">
+					<%= link_to "Employers", companies_path, class: ""%>
 		  		</li>
 	  			<li class="nav-item"> 
 			    	<%= link_to 'Sign In', "/users/sign_in" %>

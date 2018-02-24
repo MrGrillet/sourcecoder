@@ -16,7 +16,6 @@
 	</div>
 	
 </div>
-
 <div class="row">
 	<div class="col-md-6">
 		<p class="lead"><%= @company.company_strapline %></p>
@@ -35,7 +34,6 @@
 		<p><% if admin_user? %>Company User ID: <%= @company.user_id %> <% end %></p>
 	</div>
 </div>
-
 <% if current_user && (current_user.id == @company.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
