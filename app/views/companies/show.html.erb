@@ -20,22 +20,25 @@
 <div class="row">
 	<div class="col-md-6">
 		<p class="lead"><%= @company.company_strapline %></p>
-		<p><%= simple_format(@company.company_description) %></p>	
+		<p><%= simple_format(@company.company_description) %></p>
+		<hr />
+		<p>
+			<a href="http://<%= @company.company_url %>" target="_blank">www</a> | 
+			<a href="http://<%= @company.company_facebook %>" target="_blank">facebook</a> | 
+			<a href="http://<%= @company.company_twitter %>" target="_blank">twitter</a> | 
+			<a href="http://<%= @company.company_github %>" target="_blank">github</a>
+		</p>
+		<hr />
 	</div>
 	<div class="col-md-2">
 		<img src="<%= @company.logo_url %>" class="company-logo">
 		<p><% if admin_user? %>Company User ID: <%= @company.user_id %> <% end %></p>
-		<h5><a href="http://<%= @company.company_url %>" target="_blank">www</a></h5>
-		<h5><a href="http://<%= @company.company_facebook %>" target="_blank">facebook</a></h5>
-		<h5><a href="http://<%= @company.company_twitter %>" target="_blank">twitter</a></h5>
-		<h5><a href="http://<%= @company.company_github %>" target="_blank">github</a></h5>
 	</div>
 </div>
 
 <% if current_user && (current_user.id == @company.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
-			<hr />
 			<p><%= link_to 'Edit', edit_company_path(@company), class: "btn btn-xs btn-primary" %>  
 			</p>
 			<hr />

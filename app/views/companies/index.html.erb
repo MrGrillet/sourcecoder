@@ -1,15 +1,16 @@
-<h1>Companies</h1>
-<table>
-<% @companies.each do |company| %>
-	<tr>
-		<td><%= link_to company.company_name, company_path(company) %></td>
-		<td><%= link_to 'View', company_path(company), class: "btn btn-xs btn-info" %></td>
-		<td><%= link_to 'Edit', edit_company_path(company), class: "btn btn-xs btn-info" %></td>
-		<td><%= link_to 'Delete', company_path(company), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
-		
-	</tr>
+<div class="row">
+	<div class="col-md-8">
+		<h1>All Companies</h1>
+		<table>
+		<% @companies.each do |company| %>
+			<tr>
+				<td width="100%"><%= link_to company.company_name, company_path(company) %></td>
+				<td><%= link_to 'View', company_path(company), class: "btn btn-xs btn-info" %></td>
+				<td><%= link_to 'Edit', edit_company_path(company), class: "btn btn-xs btn-info" %></td>
+				<td><%= link_to 'Delete', company_path(company), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+			</tr>
+		<% end %>
+		</table>	
+	</div>
+</div>
 
-<% end %>
-</table>
-
-<%= link_to "Create comp", new_company_path, class: "btn btn-success" %>

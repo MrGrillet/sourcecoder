@@ -1,2 +1,21 @@
-<h1>All Developer Profiles</h1>
-<p>On this page it will be possible for Admins and Employers (assuming they have paid), to view all of the developer profiles. Developers will have to say if they want to be visible or not.</p>
+<div class="row">
+	<div class="col-md-8">
+		<h1>All Developer Profiles</h1>
+		<p>On this page it will be possible for Admins and Employers (assuming they have paid), to view all of the developer profiles. Developers will have to say if they want to be visible or not.</p>
+		<p>This should be for the admin or users who have paid for access to it.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8">
+		<table>
+		<% @profiles.each do |profile| %>
+	<tr>
+		<td width="100%"><%= link_to User.find(profile.user_id)[:first_name], profile_path(profile) %></td>
+		<td><%= link_to 'View', profile_path(profile), class: "btn btn-xs btn-info" %></td>
+		<td><%= link_to 'Edit', edit_profile_path(profile), class: "btn btn-xs btn-info" %></td>
+		<td><%= link_to 'Delete', profile_path(profile), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+		
+	</tr>
+
+<% end %>
+</table>

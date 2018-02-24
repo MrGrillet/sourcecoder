@@ -1,2 +1,62 @@
-<h1>My Profile</h1>
-<p>The Applicant will be able to see some of their generic details here with an option to edit them.</p>
+<div class="row">
+	<div class="col-md-10">
+		<% if @profile.profile_youtube.present? %>
+			<iframe width="100%" height="415" src="https://www.youtube.com/embed/<%= @profile.profile_youtube %>?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-10">
+		<h1><%= User.find(@profile.user_id)[:first_name] %>'s Profile</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8">
+		<% if @profile.profile_objective.present? %>
+			<h4>Objective</h4>
+			<p><%= simple_format(@profile.profile_objective) %></p>	
+		<% end %>
+		<% if @profile.profile_bio.present? %>
+			<h4>Personal Profile</h4>
+			<p><%= simple_format(@profile.profile_bio) %></p>	
+		<% end %>
+		<% if @profile.profile_additional_notes.present? %>
+			<h4>Additional Notes</h4>
+			<p><%= simple_format(@profile.profile_additional_notes) %></p>	
+		<% end %>
+	</div>
+	<div class="col-md-2">
+		<% if @profile.profile_image.present? %>
+			<img src="<%= @profile.profile_image %>" height="150px" >	
+		<% end %>
+		<h3><%= User.find(@profile.user_id)[:first_name] %> <%= User.find(@profile.user_id)[:last_name] %></h3>
+		<h4>Contact Details</h4>
+		<% if @profile.profile_phone_number.present? %>
+			<p><%= @profile.profile_phone_number %></p>	
+		<% end %>
+		<%= User.find(@profile.user_id)[:email] %>
+		<h4>Links</h4>
+		<% if @profile.profile_url.present? %>
+			<p><a href="http://<%= @profile.profile_url %>" target="_blank">www</a></p>	
+		<% end %>
+		<% if @profile.profile_github.present? %>
+			<p><a href="http://<%= @profile.profile_github %>" target="_blank">github</a></p>		
+		<% end %>
+		<% if @profile.profile_twitter.present? %>
+			<p><a href="http://<%= @profile.profile_twitter %>" target="_blank">twitter</a></p>		
+		<% end %>
+		<% if @profile.profile_linkedin.present? %>
+			<p><a href="http://<%= @profile.profile_linkedin %>" target="_blank">linkedin</a></p>	
+		<% end %>
+	</div>
+</div>
+<div class="row">
+		<div class="col-md-8">
+			<hr />
+			<p><%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-xs btn-primary" %> 
+			<% if admin_user? || employer? %>
+				 | <%= link_to 'Back to all users', profiles_path %>
+			<% end %>
+			</p>
+		</div>
+	</div>

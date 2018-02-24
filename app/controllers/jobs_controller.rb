@@ -5,7 +5,6 @@ class JobsController < ApplicationController
 	def index
 		@jobs = Job.all	
 		@code_languages = CodeLanguage.all
-		
 	end
 
 	def new
@@ -17,7 +16,6 @@ class JobsController < ApplicationController
 
 	def edit
 		@code_languages = CodeLanguage.all
-
 	end
 
 	def create

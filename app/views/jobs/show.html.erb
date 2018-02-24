@@ -63,7 +63,6 @@
 			<p><%= simple_format(@job.benefits) %></p>	
 		<% end %>
 	</div>
-
 </div>
 <% if current_user && (current_user.id == @job.user_id || admin_user?) %>
 	<div class="row">
