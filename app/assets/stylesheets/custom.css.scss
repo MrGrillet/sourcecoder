@@ -6897,18 +6897,30 @@ a.btn-success {
     min-height: 350px;   
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
   .col-sm-4 {
     width: 100%;
     flex: 100%
   }
+#navbar-collapsed .nav-pills > li {
+    width: 100%;
 }
 
-@media (min-width: 768px) {
+
+#navbar-collapsed .pull-right {
+  float: none !important; 
+}
+
+}
+
+@media (max-width: 768px) {
     .col-sm-4 {
     width: 100%;
     flex: 100%
   }
+
+
+
 }
 
 .navbar a {
@@ -6926,3 +6938,5 @@ h4 {
 .kpi-number {
   font-size: 90px;
 }
+
+
