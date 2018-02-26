@@ -16,6 +16,9 @@
 			<h4>Objective</h4>
 			<p><%= simple_format(@profile.profile_objective) %></p>	
 		<% end %>
+		<h4>Employment History</h4>
+		<h5><%= @work_history.previous_job_title %></h5>
+		
 		<% if @profile.profile_bio.present? %>
 			<h4>Personal Profile</h4>
 			<p><%= simple_format(@profile.profile_bio) %></p>	

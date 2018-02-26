@@ -7,9 +7,15 @@ class ProfilesController < ApplicationController
 
 	def new
 		@profile = Profile.new
+		@profiles = Profile.all	
+		@profile.previous_jobs.build
+
+
 	end
 
 	def edit
+		@profiles = Profile.all	
+		@profile.previous_jobs.build
 	end
 
 	def create
@@ -25,6 +31,7 @@ class ProfilesController < ApplicationController
 
 
 	def show
+		@work_history = PreviousJob.find_by(profile_id: @profile)
 
 		if User.find(current_user.id) == "applicant"
 			@profile = current_user.id
@@ -55,7 +62,8 @@ class ProfilesController < ApplicationController
 			@profile = Profile.find(params[:id])
 		end
 
+
 		def profile_params
-			params.require(:profile).permit(:profile_bio, :profile_objective, :profile_additional_notes, :profile_url, :profile_phone_number, :user, :profile_twitter, :profile_github, :profile_linkedin, :profile_featured, :profile_youtube, :profile_image, :profile_wallpaper, :user_id )
+			params.require(:profile).permit(:profile_bio, :profile_objective, :profile_additional_notes, :profile_url, :profile_phone_number, :user, :profile_twitter, :profile_github, :profile_linkedin, :profile_featured, :profile_youtube, :profile_image, :profile_wallpaper, :user_id, previous_jobs_attributes: PreviousJob.attribute_names.map(&:to_sym).push(:_destroy))
 		end
 end
