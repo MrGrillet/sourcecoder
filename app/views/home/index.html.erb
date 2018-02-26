@@ -17,23 +17,19 @@
 	</div>
 	<div class="col-md-2"></div>
 </div>
-
 <%= render 'shared/featured_jobs' %>
-
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card align-items-center text-center" style="">
 		  <div class="card-body"  >
-		    <h2 class="card-title">Select your stack</h2>
-		    <p class="card-text text-center">Click on your favouite language or framework to see our list of revelvant roles</p>
+		    <h2 class="card-title">Search for your ideal job</h2>
+		    <p class="card-text text-center">Your ideal job is just a few cliks away...</p>
 		    <p class="card-text text-center">
-			    <% @code_languages.each do |lang| %>
-	  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
-  				<% end %>
-  			</p>
-			<p class="card-text text-center">
-				<br>
-				<%= link_to "View All", jobs_path, class: "btn btn-outline" %>
+			    <%= form_tag(jobs_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term], class: "form-control" %>
+  <br />
+  <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
+<% end %>
 			</p>
 		  </div>
 		</div>
@@ -92,4 +88,22 @@
 		</div>
 	</div>
 </div>
-	
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card align-items-center text-center" style="">
+		  <div class="card-body"  >
+		    <h2 class="card-title">Select your stack</h2>
+		    <p class="card-text text-center">Click on your favouite language or framework to see our list of revelvant roles</p>
+		    <p class="card-text text-center">
+			    <% @code_languages.each do |lang| %>
+	  				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
+  				<% end %>
+  			</p>
+			<p class="card-text text-center">
+				<br>
+				<%= link_to "View All", jobs_path, class: "btn btn-outline" %>
+			</p>
+		  </div>
+		</div>
+	</div>
+</div>

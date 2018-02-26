@@ -14,13 +14,22 @@
 		<p>Lorem Khaled Ipsum is a major key to success. The other day the grass was brown, now it’s green because I ain’t give up. Never surrender. Always remember in the jungle there’s a lot of they in there, after you overcome they, you will make it to paradise. Egg whites, turkey sausage, wheat toast, water. Of course they don’t want us to eat our breakfast, so we are going to enjoy our breakfast. It’s on you how you want to live your life. Everyone has a choice. I pick my choice, squeaky clean. Eliptical talk
 		</p>
 	</div>
-</div>
-
-<%= form_tag(jobs_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term] %>
-  <%= submit_tag 'Search', name: nil %>
+	<div class="col-lg-5">
+		<div class="align-items-center text-center" style="">
+			<br>
+		    <h2 class="card-title">Search for your ideal job</h2>
+		    <p class="card-text text-center">Your ideal job is just a few cliks away...</p>
+		    <p class="card-text text-center">
+			    <%= form_tag(jobs_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term], class: "form-control" %>
+  <br />
+  <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
 <% end %>
-
+			</p>
+		  
+		</div>
+	</div>
+</div>
 <%= render 'shared/featured_jobs' %>
 <div class="row">
 	<% @jobs.each do |job| %>
