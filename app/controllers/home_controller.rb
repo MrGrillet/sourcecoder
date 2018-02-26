@@ -6,4 +6,6 @@ class HomeController < ApplicationController
   	@jobs = Job.all
   	@companies = Company.all
   end
+
+
 end

@@ -15,6 +15,12 @@
 		</p>
 	</div>
 </div>
+
+<%= form_tag(jobs_path, method: :get) do %>
+  <%= text_field_tag :term, params[:term] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <%= render 'shared/featured_jobs' %>
 <div class="row">
 	<% @jobs.each do |job| %>

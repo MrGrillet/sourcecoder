@@ -3,8 +3,10 @@ class JobsController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
-		@jobs = Job.all	
+		# @jobs = Job.all	
 		@code_languages = CodeLanguage.all
+
+	@jobs = Job.search(params[:term])
 	end
 
 	def new
@@ -65,7 +67,7 @@ class JobsController < ApplicationController
 		end
 		
 		def job_params
-			params.require(:job).permit(:title, :description, :location, :salary, :company_id, :user, :benefits, :tech_stack, :skills_ideal, :skills_essential, :applicant_background, :the_role, code_language_ids:[])
+			params.require(:job).permit(:title, :description, :location, :salary, :company_id, :user, :benefits, :tech_stack, :skills_ideal, :skills_essential, :applicant_background, :the_role, :term, code_language_ids:[])
 		end
 
 end
