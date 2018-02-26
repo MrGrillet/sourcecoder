@@ -31,7 +31,7 @@ class ProfilesController < ApplicationController
 
 
 	def show
-		@work_history = PreviousJob.find_by(profile_id: @profile)
+		@work_history = PreviousJob.where(profile_id: @profile)
 
 		if User.find(current_user.id) == "applicant"
 			@profile = current_user.id

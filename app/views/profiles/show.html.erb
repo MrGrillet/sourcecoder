@@ -6,8 +6,32 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-9">
-		<h1><%= User.find(@profile.user_id)[:first_name] %>'s Profile</h1>
+	<div class="col-md-3">
+		<% if @profile.profile_image.present? %>
+			<img src="<%= @profile.profile_image %>" height="150px" >	
+		<% end %>
+	</div>
+	<div class="col-md-3">
+		<h3><%= User.find(@profile.user_id)[:first_name] %> <%= User.find(@profile.user_id)[:last_name] %></h3>
+		<% if @profile.profile_phone_number.present? %>
+			<p><%= @profile.profile_phone_number %></p>	
+		<% end %>
+		<%= User.find(@profile.user_id)[:email] %>
+	
+	<p>
+		<% if @profile.profile_url.present? %>
+			<a href="http://<%= @profile.profile_url %>" target="_blank">www</a> |
+		<% end %>
+		<% if @profile.profile_github.present? %>
+			<a href="http://<%= @profile.profile_github %>" target="_blank">github</a> | 	
+		<% end %>
+		<% if @profile.profile_twitter.present? %>
+			<a href="http://<%= @profile.profile_twitter %>" target="_blank">twitter</a> |		
+		<% end %>
+		<% if @profile.profile_linkedin.present? %>
+			<a href="http://<%= @profile.profile_linkedin %>" target="_blank">linkedin</a>
+		<% end %>
+	</p>
 	</div>
 </div>
 <div class="row">
@@ -16,40 +40,42 @@
 			<h4>Objective</h4>
 			<p><%= simple_format(@profile.profile_objective) %></p>	
 		<% end %>
-		<h4>Employment History</h4>
-		<h5><%= @work_history.previous_job_title %></h5>
-		
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-7">
 		<% if @profile.profile_bio.present? %>
 			<h4>Personal Profile</h4>
 			<p><%= simple_format(@profile.profile_bio) %></p>	
 		<% end %>
+	</div>
+</div>
+<% if @work_history.present? %>
+	<div class="row">
+		<div class="col-md-7">
+			<h4>Employment History</h4>
+		</div>
+			<% @work_history.each do |job| %>
+			<div class="">
+				<div class="col-md-4">
+					<h5><%= job.previous_job_title %></h5>	
+				</div>
+				<div class="col-md-3">
+				    <h5><%= job.previous_company_name %></h5>
+				</div>
+				<div class="col-md-7">
+			    	<p><%= simple_format(job.previous_job_description) %></p>
+			    	<hr />	
+			    </div>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+<div class="row">
+	<div class="col-md-7">
 		<% if @profile.profile_additional_notes.present? %>
 			<h4>Additional Notes</h4>
 			<p><%= simple_format(@profile.profile_additional_notes) %></p>	
-		<% end %>
-	</div>
-	<div class="col-md-2">
-		<% if @profile.profile_image.present? %>
-			<img src="<%= @profile.profile_image %>" height="150px" >	
-		<% end %>
-		<h3><%= User.find(@profile.user_id)[:first_name] %> <%= User.find(@profile.user_id)[:last_name] %></h3>
-		<h4>Contact Details</h4>
-		<% if @profile.profile_phone_number.present? %>
-			<p><%= @profile.profile_phone_number %></p>	
-		<% end %>
-		<%= User.find(@profile.user_id)[:email] %>
-		<h4>Links</h4>
-		<% if @profile.profile_url.present? %>
-			<p><a href="http://<%= @profile.profile_url %>" target="_blank">www</a></p>	
-		<% end %>
-		<% if @profile.profile_github.present? %>
-			<p><a href="http://<%= @profile.profile_github %>" target="_blank">github</a></p>		
-		<% end %>
-		<% if @profile.profile_twitter.present? %>
-			<p><a href="http://<%= @profile.profile_twitter %>" target="_blank">twitter</a></p>		
-		<% end %>
-		<% if @profile.profile_linkedin.present? %>
-			<p><a href="http://<%= @profile.profile_linkedin %>" target="_blank">linkedin</a></p>	
 		<% end %>
 	</div>
 </div>
