@@ -4,6 +4,20 @@
 		<p>On this page it will be possible for Admins and Employers (assuming they have paid), to view all of the developer profiles. Developers will have to say if they want to be visible or not.</p>
 		<p>This should be for the admin or users who have paid for access to it.</p>
 	</div>
+	<div class="col-lg-5">
+		<div class="align-items-center text-center" style="">
+			<br>
+		    <h2 class="card-title">Search</h2>
+		    <p class="card-text text-center">Your ideal candidate is just a few clicks away...</p>
+		    <p class="card-text text-center">
+			    <%= form_tag(profiles_path, method: :get) do %>
+  				<%= text_field_tag :term, params[:term], class: "form-control" %>
+  				<br />
+  				<%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
+				<% end %>
+			</p>
+		</div>
+	</div>
 </div>
 <div class="row">
 	<div class="col-md-8">

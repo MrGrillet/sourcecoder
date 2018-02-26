@@ -17,16 +17,15 @@
 	<div class="col-lg-5">
 		<div class="align-items-center text-center" style="">
 			<br>
-		    <h2 class="card-title">Search for your ideal job</h2>
-		    <p class="card-text text-center">Your ideal job is just a few cliks away...</p>
+		    <h2 class="card-title">Search</h2>
+		    <p class="card-text text-center">Your ideal job is just a few clicks away...</p>
 		    <p class="card-text text-center">
 			    <%= form_tag(jobs_path, method: :get) do %>
-  <%= text_field_tag :term, params[:term], class: "form-control" %>
-  <br />
-  <%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
-<% end %>
+  				<%= text_field_tag :term, params[:term], class: "form-control" %>
+  				<br />
+  				<%= submit_tag 'Search', name: nil, class: "btn btn-success" %>
+				<% end %>
 			</p>
-		  
 		</div>
 	</div>
 </div>

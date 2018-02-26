@@ -5,8 +5,7 @@ class JobsController < ApplicationController
 	def index
 		# @jobs = Job.all	
 		@code_languages = CodeLanguage.all
-
-	@jobs = Job.search(params[:term])
+		@jobs = Job.search(params[:term])
 	end
 
 	def new
