@@ -32,6 +32,11 @@
 			<a href="http://<%= @company.company_github %>" target="_blank">github</a>
 		</p>
 		<hr />
+		<p>
+			<% @code_languages.each do |lang| %>
+				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
+		  	<% end %>
+		</p>
 	</div>
 	<div class="col-md-2">
 		<img src="<%= @company.logo_url %>" class="company-logo">
@@ -41,13 +46,12 @@
 <% if current_user && (current_user.id == @company.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
-			<p><%= link_to 'Edit', edit_company_path(@company), class: "btn btn-xs btn-primary" %>  
+			<p><%= link_to 'Edit', edit_company_path(@company), class: "btn btn" %>  
 			</p>
 			<hr />
 		</div>
 	</div>
 <% end %>
-
 <div class="row">
 	<div class="col-md-9">
 		<h3>Jobs at <%= @company.company_name %></h3>

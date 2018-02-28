@@ -32,6 +32,7 @@ class ProfilesController < ApplicationController
 
 
 	def show
+		@code_languages = CodeLanguage.all
 		@work_history = PreviousJob.where(profile_id: @profile)
 
 		if User.find(current_user.id) == "applicant"

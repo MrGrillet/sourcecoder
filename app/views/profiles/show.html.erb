@@ -1,62 +1,105 @@
 <div class="row">
-	<div class="col-md-9">
-		<% if @profile.profile_youtube.present? %>
-			<iframe width="100%" height="415" src="https://www.youtube.com/embed/<%= @profile.profile_youtube %>?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-		<% end %>
+	<div class="col-md-12">	
+			<div class="col-md-6">
+				<h1><%= User.find(@profile.user_id)[:first_name] %> <%= User.find(@profile.user_id)[:last_name] %></h1>
+				<% if @profile.profile_phone_number.present? %>
+					<p><%= @profile.profile_phone_number %></p>	
+				<% end %>
+				<%= User.find(@profile.user_id)[:email] %>
+				<p>
+					<% if @profile.profile_url.present? %>
+						<a href="http://<%= @profile.profile_url %>" target="_blank">website</a> |
+					<% end %>
+					<% if @profile.profile_github.present? %>
+						<a href="http://<%= @profile.profile_github %>" target="_blank">github</a> | 	
+					<% end %>
+					<% if @profile.profile_twitter.present? %>
+						<a href="http://<%= @profile.profile_twitter %>" target="_blank">twitter</a> |		
+					<% end %>
+					<% if @profile.profile_linkedin.present? %>
+						<a href="http://<%= @profile.profile_linkedin %>" target="_blank">linkedin</a>
+					<% end %>
+				</p>
+			</div>
+			<div class="col-md-6">
+				<% if @profile.profile_image.present? %>
+					<img src="<%= @profile.profile_image %>" height="150px" class="rounded" >	
+				<% end %>
+			</div>
+
+		</div>
+
+	</div>
+
+<% if @profile.profile_youtube.present? %>
+	<div class="row">
+		<div class="col-md-12">		
+			<iframe width="100%" height="520" src="https://www.youtube.com/embed/<%= @profile.profile_youtube %>?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	
+		</div>
+	</div>
+<% end %>
+<div class="row">
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<% if @profile.profile_bio.present? %>
+				<h2>Personal Profile</h2>
+				<p><%= simple_format(@profile.profile_bio) %></p>	
+			<% end %>
+
+			<br>
+		</div>
+			<div class="col-md-6">
+		  		<% if @profile.profile_objective.present? %>
+				<h2>Objective</h2>
+				<p><%= simple_format(@profile.profile_objective) %></p>	
+			<% end %>
+			</div>	
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-3">
-		<% if @profile.profile_image.present? %>
-			<img src="<%= @profile.profile_image %>" height="150px" >	
-		<% end %>
-	</div>
-	<div class="col-md-3">
-		<h3><%= User.find(@profile.user_id)[:first_name] %> <%= User.find(@profile.user_id)[:last_name] %></h3>
-		<% if @profile.profile_phone_number.present? %>
-			<p><%= @profile.profile_phone_number %></p>	
-		<% end %>
-		<%= User.find(@profile.user_id)[:email] %>
+	<div class="col-md-12">
+		<h2>Overview</h2>
+
+Dropdown: MM YYYY as a programmer
+
+
+<h3>Confidence</h3>
+Dropdown: confidence: front end, back end, database, = piechart
+<img src="<%= asset_path 'doughnut.png' %>" width="20%" class="rounded" >
+
+<h3>level</h3>
+fresh out of bootcamp, Junior, mid, senior
+
+<h3>background</h3>
+: self taught, CS Degree, Bootcamp, on the job
+
+
+Dropdown: lang integer integer integer
+
+eg: html 10 10 10
+<h3>Languages</h3>
+javascript / years / confidence/ shipped projects
+css / years = x (out of 10)/ confidence = y (out of 10)/ shipped projects = size (enter integer)
+html / years / confidence/ shipped projects
+Ruby / years / confidence/ shipped projects
+Rails / years / confidence/ shipped projects
+vue
+node
+java
+
+
+<img src="<%= asset_path 'chart.png' %>" width="100%" class="rounded" >
 	
-	<p>
-		<% if @profile.profile_url.present? %>
-			<a href="http://<%= @profile.profile_url %>" target="_blank">www</a> |
-		<% end %>
-		<% if @profile.profile_github.present? %>
-			<a href="http://<%= @profile.profile_github %>" target="_blank">github</a> | 	
-		<% end %>
-		<% if @profile.profile_twitter.present? %>
-			<a href="http://<%= @profile.profile_twitter %>" target="_blank">twitter</a> |		
-		<% end %>
-		<% if @profile.profile_linkedin.present? %>
-			<a href="http://<%= @profile.profile_linkedin %>" target="_blank">linkedin</a>
-		<% end %>
-	</p>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-7">
-		<% if @profile.profile_objective.present? %>
-			<h4>Objective</h4>
-			<p><%= simple_format(@profile.profile_objective) %></p>	
-		<% end %>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-7">
-		<% if @profile.profile_bio.present? %>
-			<h4>Personal Profile</h4>
-			<p><%= simple_format(@profile.profile_bio) %></p>	
-		<% end %>
-	</div>
-</div>
+
 <% if @work_history.present? %>
 	<div class="row">
-		<div class="col-md-7">
-			<h4>Employment History</h4>
+		<div class="col-md-12">
+			<h2>Projects & Work History</h2>
 		</div>
 			<% @work_history.each do |job| %>
-			<div class="">
+			<div class="well well-lg">
 				<div class="col-md-4">
 					<h5><%= job.previous_job_title %></h5>	
 				</div>
@@ -64,9 +107,26 @@
 				    <h5><%= job.previous_company_name %></h5>
 				</div>
 				<div class="col-md-7">
+					<p>
+			    	<% @code_languages.each do |lang| %>
+	  					<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
+  					<% end %>
+  					</p>
 			    	<p><%= simple_format(job.previous_job_description) %></p>
-			    	<hr />	
 			    </div>
+			    <div class="col-md-5">
+			    	<img src="<%= @profile.profile_wallpaper %>" style="max-width: 410px;" class="rounded" >
+  					<hr>
+  					<p>
+  						<a href="http://<%= @profile.profile_url %>" target="_blank" class="btn pull-left" style="width: 40%" >Website</a> 
+	  					<a href="http://<%= @profile.profile_url %>" target="_blank" class="btn pull-right" style="width: 40%" >Github </a>
+	  				</p>
+			    </div>
+			    
+			    <div class="col-md-7">
+			    	<h5>Aug 09 / Sep 15</h5>
+			    </div>
+			   
 			</div>
 		<% end %>
 	</div>
@@ -74,18 +134,19 @@
 <div class="row">
 	<div class="col-md-7">
 		<% if @profile.profile_additional_notes.present? %>
-			<h4>Additional Notes</h4>
+			<h2>Additional Notes</h2>
 			<p><%= simple_format(@profile.profile_additional_notes) %></p>	
 		<% end %>
 	</div>
 </div>
 <div class="row">
-		<div class="col-md-9">
+		<div class="col-md-7">
 			<hr />
 			<% if current_user.id == @profile.user_id %>
-			<p><%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-xs btn-primary" %> <% end %>
-			<% if admin_user? || employer? %>
-				  <%= link_to 'Back to applications', applications_path %>
+			<p><%= link_to 'Edit', edit_profile_path(@profile), class: "btn btn-info" %> <%= link_to 'back to job listings', jobs_path, class: "btn" %>
+			<% end %>
+			<% if  !(current_user.id == @profile.user_id) && (admin_user? || employer?) %>
+				  <%= link_to 'Back to applications', applications_path, class: "btn" %>
 			<% end %>
 			</p>
 		</div>

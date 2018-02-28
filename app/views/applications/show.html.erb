@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-7">
 		<h1><%= User.find(@application.user_id)[:first_name] %> <%= User.find(@application.user_id)[:last_name] %>'s application</h1>
 		<small>for <%= Job.find(@application.job_id)[:title] %></small>
 	</div>
@@ -12,19 +12,19 @@
 	</div>
 <% end %>
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-7">
 		<h3>What <%= @applicant.first_name %> had to say...</h3>
 		<%= simple_format(@application.application_body) %>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-7">
 		<hr />
 		<h3><%= @applicant.first_name %>'s profile</h3>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-7">
+	<div class="col-md-5">
 		<p><%= simple_format(@applicant_profile.profile_objective) %></p>
 		<p>
 			<%= link_to "Learn more", profile_path(@applicant_profile.id) %> |
@@ -39,13 +39,13 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-7">
 		<hr />
-			<% if current_user.id == @application.user_id %>
-				<%= link_to 'Edit', edit_application_path(@application) %> | 
-				<%= link_to 'Delete', application_path(@application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %> | 
-			<% end %>	
-		<%= link_to "Return to applications", applications_path %>
+		<%= link_to "Return to applications", applications_path, class: "btn" %>
+		<% if current_user.id == @application.user_id %>
+			<%= link_to 'Edit', edit_application_path(@application), class: "btn btn-info" %>  
+			<%= link_to 'Delete', application_path(@application), class: "btn btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %>  
+		<% end %>	
 	</div>
 </div>
 

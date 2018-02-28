@@ -24,10 +24,10 @@
 		<table>
 		<% @profiles.each do |profile| %>
 	<tr>
-		<td><img src="<%= profile.profile_image %>" width="50px"></td>
+		<td><img src="<%= profile.profile_image %>" width="50px" class="rounded" ></td>
 		<td><%= profile.user_id %></td>
 		<td width="100%"><%= link_to User.find(profile.user_id)[:first_name], profile_path(profile) %></td>
-		<td><%= link_to 'View', profile_path(profile), class: "btn btn-xs btn-info" %></td>
+		<td><%= link_to 'View', profile_path(profile), class: "btn btn-xs btn-primary" %></td>
 		<td><%= link_to 'Edit', edit_profile_path(profile), class: "btn btn-xs btn-info" %></td>
 		<td><%= link_to 'Delete', profile_path(profile), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
 		

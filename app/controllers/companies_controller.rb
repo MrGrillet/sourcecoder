@@ -41,7 +41,7 @@ class CompaniesController < ApplicationController
 
 	def show
 		@jobs = Job.all
-		
+		@code_languages = CodeLanguage.all
 	end
 
 	def edit
