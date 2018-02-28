@@ -39,7 +39,78 @@ class ProfilesController < ApplicationController
 			@profile = current_user.id
 			user_id = current_user.id
 		end
+	
+
+
 		
+	@data_pie = {
+    datasets: [{
+        data: [70, 20, 10],
+        backgroundColor: [ "rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]
+    }],
+
+    # These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [ "Front End", "Back End", "Databases"],
+	};
+
+
+
+	@data = {
+		
+	  labels: ["January", "February", "March", "April", "May", "June", "July"],
+	  datasets: [
+
+	    {
+	        label: "javascript",
+	        background_color:"rgb(255, 99, 132)",
+	        border_color: "rgba(255, 99, 132,1)",
+
+	        # x = years, y = projects shipped, r = confidence
+	        data: ["x": 0.4, "y": 1, "r": 20]
+	    },
+	    {
+	        label: "html",
+	        backgroundColor: "rgba(255, 99, 132,0.7)",
+	        borderColor: "rgba(255, 99, 132,1)",
+	        data: ["x": 10, "y": 60, "r": 60]
+	    },
+	    {
+	        label: "css",
+	        backgroundColor: "rgba(001,001,001,0.8)",
+	        borderColor: "rgba(001,001,001,1)",
+	        data: ["x": 10, "y": 50, "r": 60]
+	    },
+	    {
+	        label: "php",
+	        backgroundColor: "rgba(54, 162, 235,0.6)",
+	        borderColor: "rgba(54, 162, 235,1)",
+	        data: ["x": 4, "y": 30, "r": 30]
+	    },
+	    {
+	        label: "ruby",
+	        backgroundColor: "rgba(255, 205, 86,0.8)",
+	        borderColor: "rgba(255, 205, 86,1)",
+	        data: ["x": 1.8, "y": 2, "r": 30]
+	    }, 
+	    	    {  	#spacers are needed so the data is not off the charts
+	    	    	# they need to be added last with no lables so they dont mess up the key
+	        label: "",
+	        background_color:"rgb(0, 0, 0,0)",
+	        border_color: "rgba(0, 0, 0,0)",
+	        data: ["x": -1, "y": -1, "r": 1]
+	    },
+	    {
+	        label: "",
+	        background_color:"rgb(0, 0, 0,0)",
+	        border_color: "rgba(0, 0, 0,0)",
+	        data: ["x": 11, "y": 65, "r": 1]
+	    }  
+	  ]
+	}
+
+
+
+
 	end
 
 	def update

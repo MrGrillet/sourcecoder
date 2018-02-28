@@ -91,11 +91,7 @@
 	<div class="col-md-6">
 		<h3><%= @company_name %></h3>
 		<p>I told you all this before, when you have a swimming pool, do not use chlorine, use salt water, the healing, salt water is the healing. The key is to drink coconut, fresh coconut, trust me. They never said winning was easy. Some people can’t handle success, I can.</p>
-		<p><%= link_to 'learn more', company_path(@job.company_id) %> | 
-			<a href="http://<%= @company_url %>" target="_blank" >www</a> 
-			<a href="http://<%= @company_github %>" target="_blank">git</a> 
-			<a href="http://<%= @company_twitter %>" target="_blank">tw</a> 
-			<a href="http://<%= @company_facebook %>" target="_blank">fb</a></p>
+		<p><%= link_to 'View Company', company_path(@job.company_id), class: "btn" %></p>
 	</div>
 	<div class="col-md-4">
 		<img src="<%= @company_logo %>" class="some-class" style="max-width: 150px; padding-top: 30px;" >

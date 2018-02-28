@@ -13,7 +13,7 @@
 <% end %>
 <div class="row">
 	<div class="col-md-7">
-		<h3>What <%= @applicant.first_name %> had to say...</h3>
+		<h3><%= @applicant.first_name %>'s cover note...</h3>
 		<%= simple_format(@application.application_body) %>
 	</div>
 </div>
@@ -27,10 +27,7 @@
 	<div class="col-md-5">
 		<p><%= simple_format(@applicant_profile.profile_objective) %></p>
 		<p>
-			<%= link_to "Learn more", profile_path(@applicant_profile.id) %> |
-			<a href="http://<%= @applicant_profile.profile_url %>" target="_blank">www</a> | 
-			<a href="http://<%= @applicant_profile.profile_twitter %>" target="_blank">twitter</a> | 
-			<a href="http://<%= @applicant_profile.profile_github %>" target="_blank">github</a>
+			<%= link_to "View Profile", profile_path(@applicant_profile.id), class: "btn btn-primary" %>
 		</p>
 	</div>
 	<div class="col-md-2">
