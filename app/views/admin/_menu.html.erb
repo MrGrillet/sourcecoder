@@ -1,33 +1,6 @@
-<ul>
-	<li><a href="#">Admin</a>
-		<ul>
-			<li><%= link_to "Dashboard", admin_path%></li>
-			<li>User Stats</li>
-			<li>Manage Users</li>
-			<li>&nbsp;</li>
-		</ul>
-	</li>
-	<li><a href="#">Manage Jobs</a>
-		<ul>
-			<li><%= link_to 'Code Languages', code_languages_path %></li>
-			<li><%= link_to 'Add new language', new_code_language_path  %></li>
-			<li>&nbsp;</li>
-		</ul>
-	</li>
-	<li><a href="#">Marketing</a>
-		<ul>
-			<li><a href="#">Pages</a></li>
-			<li><a href="#">Posts</a></li>
-			<li><a href="#">Social Media Profiles</a></li>
-			<li>&nbsp;</li>
-		</ul>
-	</li>
-</ul>
-
 
 <div id="list-example" class="list-group">
-  <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-  <a class="list-group-item list-group-item-action" href="#list-item-2">Item2</a>
-  <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-  <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+  <%= link_to "Dashboard", admin_path, class: "list-group-item list-group-item-action" %>
+  <%= link_to 'Code Languages', code_languages_path, class: "list-group-item list-group-item-action" %>
 </div>
+

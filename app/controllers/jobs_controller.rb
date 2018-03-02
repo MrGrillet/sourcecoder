@@ -3,7 +3,6 @@ class JobsController < ApplicationController
 	skip_before_action :authenticate_user!, only: [:index, :show]
 
 	def index
-		# @jobs = Job.all	
 		@code_languages = CodeLanguage.all
 		@jobs = Job.search(params[:term])
 	end
@@ -31,7 +30,6 @@ class JobsController < ApplicationController
 		end
 	end
 
-
 	def show
 		@jobs = Job.all
 		@company_name = Company.find(@job.company_id)[:company_name]
@@ -58,9 +56,7 @@ class JobsController < ApplicationController
 	end
 
 
-	
 	private
-
 		def set_job
 			@job = Job.find(params[:id])
 		end

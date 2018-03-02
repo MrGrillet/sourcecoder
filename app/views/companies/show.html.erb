@@ -24,18 +24,11 @@
 	<div class="col-md-7">
 		<p class="lead"><%= @company.company_strapline %></p>
 		<p><%= simple_format(@company.company_description) %></p>
-		<hr />
-		<p>
+		<p class="top-spacer">
 			<a href="http://<%= @company.company_url %>" target="_blank">www</a> | 
 			<a href="http://<%= @company.company_facebook %>" target="_blank">facebook</a> | 
 			<a href="http://<%= @company.company_twitter %>" target="_blank">twitter</a> | 
 			<a href="http://<%= @company.company_github %>" target="_blank">github</a>
-		</p>
-		<hr />
-		<p>
-			<% @code_languages.each do |lang| %>
-				<a href="#" class="btn btn-xs btn-primary"><%= lang.name %></a> 
-		  	<% end %>
 		</p>
 	</div>
 	<div class="col-md-2">
@@ -46,7 +39,7 @@
 <% if current_user && (current_user.id == @company.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
-			<p><%= link_to 'Edit', edit_company_path(@company), class: "btn btn" %>  
+			<p class="top-spacer"><%= link_to 'Edit', edit_company_path(@company), class: "btn btn" %>  
 			</p>
 			<hr />
 		</div>

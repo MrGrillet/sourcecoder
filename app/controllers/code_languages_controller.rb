@@ -7,7 +7,7 @@ class CodeLanguagesController < ApplicationController
 	end
 
 	def new
-		@code_language = CodeLanguage.new
+		@language = CodeLanguage.new
 	end
 
 	def create
@@ -17,7 +17,6 @@ class CodeLanguagesController < ApplicationController
 			redirect_to code_languages_path
 		else
 			render 'new'
-			
 		end
 	end
 
@@ -36,6 +35,12 @@ class CodeLanguagesController < ApplicationController
 
 	def edit
 		
+	end
+
+	def destroy
+		@language.destroy
+		flash[:danger] = "The language has been deleted"
+		redirect_to code_languages_path
 	end
 
 	private

@@ -1,0 +1,52 @@
+<div class="row">
+	<div class="col-sm-7">
+		<h3>Name</h3>
+		<%= form_for(@language, :html => {class: "form-inline align-items-center", role: "form"}) do |f| %>
+		<div class="form-group" > 
+			 <%= f.text_field :name, class: "form-control", placeholder: "Category Name", autofocus: true %>	 	
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h3>Colour Code</h3>
+		<div class="col col-sm-2">
+			<div class="input-group ">
+				<div class="input-group-prepend">
+					<div class="input-group-text">R</div>
+					<%= f.text_field :colour_r, class: "form-control", placeholder: "000", autofocus: true %>
+				</div>
+			</div>
+		</div>
+		<div class="col  col-sm-2">
+			<div class="input-group ">
+			   	<div class="input-group-prepend">
+			      	<div class="input-group-text">G</div>
+			      	<%= f.text_field :colour_g, class: "form-control", placeholder: "000", autofocus: true %>
+			    </div>
+			</div>
+		</div>
+		<div class="col col-sm-2">
+			<div class="input-group ">
+			   	<div class="input-group-prepend">
+			      	<div class="input-group-text">B</div>
+			    	<%= f.text_field :colour_b, class: "form-control", placeholder: "000", autofocus: true %>
+			    </div>
+			</div>
+		</div>
+		<div class="col col-sm-2">
+			<div class="form-group">
+			  	<div class="input-group">
+		      		<%= f.select(:colour_opacity, ['Opacity', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9', '1.0'], {}, { :class => 'form-control form-control-lg' }) %>
+			   </div> 		
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<p class="submit-button-spacer"><%= f.submit class: "btn btn-success" %> <%= link_to "Back to languages list", code_languages_path %></p>
+	<% end %>
+	</div>
+</div>
+

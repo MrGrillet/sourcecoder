@@ -38,11 +38,13 @@
 <div class="row">
 	<div class="col-md-7">
 		<hr />
-		<%= link_to "Return to applications", job_applications_path, class: "btn" %>
-		<% if current_user.id == @application.user_id %>
-			<%= link_to 'Edit', edit_job_application_path(@application), class: "btn btn-info" %>  
-			<%= link_to 'Delete', job_application_path(@application), class: "btn btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %>  
-		<% end %>	
+		<p class="top-spacer">
+			<%= link_to "Return to applications", job_applications_path, class: "btn" %>
+			<% if current_user.id == @application.user_id %>
+				<%= link_to 'Edit', edit_job_application_path(@application), class: "btn btn-info" %>  
+				<%= link_to 'Delete', job_application_path(@application), class: "btn btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %>  
+			<% end %>	
+		</p>
 	</div>
 </div>
 

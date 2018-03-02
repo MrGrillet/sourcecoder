@@ -5,7 +5,8 @@
 	<div class="col-md-9">
 		<div class="section-container">
 			<h1>Code Languages</h1>
-			<p class="lead"> This section will eventually be filled with graphs on how the business is doinw and will provide access to all the mareting areas like the blog and landing pages.</p>
+			<p>This section allows you to manage the coding languages and framworks that appear thoughtout the site</p>
+			<p>You can add new languages, edit old ones and delete them. It's also possible to change the colours that are used to represent the languages thoughout the site.</p>
 			<hr />
 			<table>
 				<tr>
@@ -13,14 +14,13 @@
 				</tr>
 				<% @code_languages.each do |lang| %>
 					<tr>
-						<td><%= lang.name %></td>
+						<td style="width: 100%;"><%= lang.name %></td>
 						<td><%= link_to 'Edit', edit_code_language_path(lang.id), class: "btn btn-xs btn-info" %></td>
-						<td><%= link_to 'Delete', code_languages_path(lang.id), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+						<td><%= link_to 'Delete', code_language_path(lang.id), class: "btn btn-xs btn-danger", method: :delete, data: {confirm: "Are you sure?"} %></td>
 					</tr>
 				<% end %>
 			</table>
-			<hr />
-			<p><%= link_to 'Add new language', new_code_language_path, class: "btn btn-success" %></p>
+			<p class="submit-button-spacer"><%= link_to "Add new language", new_code_language_path, class: "btn btn-success" %></p>
 		</div>
 	</div>
 </div>

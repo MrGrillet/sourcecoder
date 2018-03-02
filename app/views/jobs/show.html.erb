@@ -78,9 +78,10 @@
 <% if current_user && (current_user.id == @job.user_id || admin_user?) %>
 	<div class="row">
 		<div class="col-md-8">
-			<hr />
-			<p><%= link_to 'Edit', edit_job_path(@job), class: "btn btn-info" %>  
-			<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></p>
+			<p class="top-spacer">
+				<%= link_to 'Edit', edit_job_path(@job), class: "btn btn-info" %>  
+				<%= link_to 'Delete', job_path(@job), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>	
+			</p>
 		</div>
 	</div>
 <% end %>

@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-2"> 
-		<h1>Update your company</h1>
+		<h1>Update your company profile</h1>
 		<%= render 'shared/errors', obj: @company %>
 	</div>
 </div>
@@ -54,7 +54,9 @@
 		
 
 		<div class="form-group" >
-			<div class="col-sm-10 col-sm-offset-2"><%= f.submit class: "btn btn-lg btn-warning" %>    <%= link_to "Cancel and return home", root_path %></div>
+			<div class="col-sm-10 col-sm-offset-2">
+				<p class="top-spacer"><%= f.submit class: "btn btn-warning" %> <%= link_to "cancel and return home", root_path %></p>
+				</div>
 		</div>
 		<% end %>
 	</div>

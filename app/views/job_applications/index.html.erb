@@ -1,8 +1,14 @@
-<h1>Applications</h1>
+<div class="row">
+	<div class="col-md-12">
+		<h1>Applications</h1>
+		<p>Manage your job applications</p>
+	</div>
+</div>
 <% if employer? || admin_user? %>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-7">
 			<h2>Recent job applications</h2>
+			<p>These are all the applications that have been sent in from people who wish to work with you.</p>
 		</div>
 	</div>
 	<div class="row">
@@ -28,6 +34,7 @@
 	<div class="row">
 		<div class="col-md-12">		
 			<h2>Recent Applications <% if admin_user? %>(as an employee)<% end %></h2>
+			<p>These are all of the applications you have sent to potential employers.</p>
 		</div>
 	</div>
 	<div class="row">
@@ -56,6 +63,7 @@
 	<div class="row">
 		<div class="col-md-12">		
 			<h2>Recent Job Ads</h2>
+			<p>This is a list of the job ads you have posted.</p>
 		</div>
 	</div>
 	<div class="row">
