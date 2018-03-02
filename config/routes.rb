@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :user_jobs, only: [:create]
   resources :code_languages
   resources :companies
-  resources :applications
+  resources :job_applications, path: "applications"
   resources :profiles
 
 

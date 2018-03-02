@@ -10,23 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180225182300) do
+ActiveRecord::Schema.define(version: 20180228202343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "applications", force: :cascade do |t|
-    t.integer "application_id"
-    t.string "application_title"
-    t.text "application_body"
-    t.string "profile_url"
-    t.boolean "profile_featured"
-    t.integer "job_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.string "youtube_url"
-  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -38,6 +25,10 @@ ActiveRecord::Schema.define(version: 20180225182300) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "colour_r"
+    t.integer "colour_g"
+    t.integer "colour_b"
+    t.integer "colour_opacity"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -57,6 +48,19 @@ ActiveRecord::Schema.define(version: 20180225182300) do
     t.string "company_strapline"
     t.boolean "featured"
     t.string "company_youtube"
+  end
+
+  create_table "job_applications", force: :cascade do |t|
+    t.integer "application_id"
+    t.string "application_title"
+    t.text "application_body"
+    t.string "profile_url"
+    t.boolean "profile_featured"
+    t.integer "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "youtube_url"
   end
 
   create_table "job_languages", force: :cascade do |t|

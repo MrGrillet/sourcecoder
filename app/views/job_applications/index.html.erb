@@ -12,10 +12,10 @@
 					<% if current_user.id == Job.find(application.job_id)[:user_id] %>
 						<tr>
 							<td style="width: 100%;"><%= application.user_id %>. <%= User.find(application.user_id)[:first_name] %>'s application for <strong><%= Job.find(application.job_id)[:title] %></strong></td>
-							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn" %>  </td>
+							<td><%= link_to 'View', job_application_path(application.id), class: "btn btn-xs btn" %>  </td>
 							<% if admin_user? %>
-								<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-info" %></td>
-								<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+								<td><%= link_to 'Edit', edit_job_application_path(application.id), class: "btn btn-xs btn-info" %></td>
+								<td><%= link_to 'Delete', job_application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
 							<% end %>
 						</tr>
 					<% end %>
@@ -37,9 +37,9 @@
 					<% if current_user.id == application.user_id %>
 						<tr>
 							<td style="width: 100%;"><%= Job.find(application.job_id)[:title] %></td>
-							<td><%= link_to 'View', application_path(application.id), class: "btn btn-xs btn" %></td>
-							<td><%= link_to 'Edit', edit_application_path(application.id), class: "btn btn-xs btn-info" %></td>
-							<td><%= link_to 'Delete', application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
+							<td><%= link_to 'View', job_application_path(application.id), class: "btn btn-xs btn" %></td>
+							<td><%= link_to 'Edit', edit_job_application_path(application.id), class: "btn btn-xs btn-info" %></td>
+							<td><%= link_to 'Delete', job_application_path(application), class: "btn btn-xs btn-danger" , method: :delete, data: {confirm: "Are you sure?"} %></td>
 						</tr>					
 					<% end %>
 				<% end %>

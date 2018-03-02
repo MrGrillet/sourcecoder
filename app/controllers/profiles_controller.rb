@@ -40,8 +40,12 @@ class ProfilesController < ApplicationController
 			user_id = current_user.id
 		end
 	
-
-
+		 # @options = {"height": 200, "width": 200} # pushes through
+		 # @options = [:height => 200, :width => 200] # pushes through
+		 # @options = {options: ["height" => 200, "width" => 200]} # pushes through
+		 # @options = ["height: 200", "width: 200"]
+		  @options = {height: 200, width: 200}
+		 
 		
 	@data_pie = {
     datasets: [{
@@ -54,9 +58,7 @@ class ProfilesController < ApplicationController
 	};
 
 
-
 	@data = {
-		
 	  labels: ["January", "February", "March", "April", "May", "June", "July"],
 	  datasets: [
 

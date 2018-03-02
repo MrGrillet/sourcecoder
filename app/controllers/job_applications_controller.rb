@@ -1,9 +1,9 @@
-class ApplicationsController < ApplicationController
+class JobApplicationsController < ApplicationController
 	before_action :set_application, only: [:edit, :update, :show, :destroy]
 	before_action :set_job, only: [:new, :create]
 
 	def index
-		@applications = Application.all
+		@applications = JobApplication.all
 		@jobs = Job.all
 	end
 
@@ -13,29 +13,29 @@ class ApplicationsController < ApplicationController
 		@job_description = Job.find(@job)[:description]
 		@job_id = Job.find(@job)[:id]
 		@user_id = current_user.id
-		@application = Application.new
+		@application = JobApplication.new
 	end
 		
 	def create
-		@application = Application.new(application_params)
+		@application = JobApplication.new(application_params)
 		@user_id = current_user.id
 		if @application.save
 			flash[:success] = "Application saved"
-			redirect_to application_path(@application)
+			redirect_to job_application_path(@application)
 		else
 			render 'new'
 		end
 	end
 
 	def edit
-		@applications = Application.all
+		@applications = JobApplication.all
 	end
 
 	def update
 		@user_id = current_user.id
 		if @application.update(application_params)
 			flash[:success] = "Your application was successfully updated"
-			redirect_to applications_path
+			redirect_to job_applications_path
 		else
 			render 'edit'
 		end
@@ -49,13 +49,13 @@ class ApplicationsController < ApplicationController
 	def destroy
 		@application.destroy
 		flash[:danger] = "Application deleted"
-		redirect_to applications_path
+		redirect_to job_applications_path
 	end
 
 	private 
 
 		def set_application
-			@application = Application.find(params[:id])
+			@application = JobApplication.find(params[:id])
 		end
 
 		def set_job
@@ -63,6 +63,6 @@ class ApplicationsController < ApplicationController
 		end
 	
 		def application_params
-			params.require(:application).permit(:application_body, :job_id, :user_id, :youtube_url)
+			params.require(:job_application).permit(:application_body, :job_id, :user_id, :youtube_url)
 		end
 end

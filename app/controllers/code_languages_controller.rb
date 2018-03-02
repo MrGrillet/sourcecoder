@@ -41,7 +41,7 @@ class CodeLanguagesController < ApplicationController
 	private
 
 		def code_language_params
-			params.require(:code_language).permit(:name)
+			params.require(:code_language).permit(:name, :colour_r, :colour_g, :colour_b, :colour_opacity)
 		end
 		
 		def set_lang

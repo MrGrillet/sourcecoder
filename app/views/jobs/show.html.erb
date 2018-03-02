@@ -107,7 +107,7 @@
 			<% elsif current_user && employer? %>
 				<%= link_to "Back to job listings", jobs_path, class: "btn" %>
 			<% else %>
-			<%= link_to "Apply Now", new_application_path(:job_id => params[:id]), class: "btn btn-lg btn-success" %> <%= link_to "back to job listings", jobs_path %>
+			<%= link_to "Apply Now", new_job_application_path(:job_id => params[:id]), class: "btn btn-lg btn-success" %> <%= link_to "back to job listings", jobs_path %>
 			<% end %>
 		
 

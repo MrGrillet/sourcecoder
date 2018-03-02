@@ -31,7 +31,7 @@
 					      <div class="dropdown-divider"></div>
 					      <% if Company.find_by(user: current_user.id) %>
 			  				<%= link_to "Create Job Post", new_job_path, class: "dropdown-item"  %>
-			  				<%= link_to 'Review Applications', applications_path, class: "dropdown-item" %>	
+			  				<%= link_to 'Review Applications', job_applications_path, class: "dropdown-item" %>	
 			  			<% else %>
 			  				<%= link_to "Create Company Profile", new_company_path, class: "dropdown-item"  %>
 			  			<% end %>
@@ -64,7 +64,7 @@
 					      <% if Profile.find_by(user_id: current_user.id) %>
 					      	 <%= link_to 'My Profile', profile_path(current_user_profile_id), class: "dropdown-item" %>
 					      <% end %>
-					      <%= link_to 'My Applications', applications_path, class: "dropdown-item" %>
+					      <%= link_to 'My Applications', job_applications_path, class: "dropdown-item" %>
 					      <div class="dropdown-divider"></div>
 					      <%= link_to 'Update Login Details', edit_user_registration_path, class: "dropdown-item" %>
 					    </div>
