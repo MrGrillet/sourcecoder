@@ -83,7 +83,7 @@ Conversations and experience have shown me that the process of hiring junior dev
 
 Example of current profile page as viewed by an employer:
 
-![My image](https://www.dropbox.com/s/1s6ybywsrhst9je/profile%20page.png)
+![My image](http://mrgrillet.com/wp-content/uploads/2018/03/profile-page.jpg)
 
 
 Visit the app here...
