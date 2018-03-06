@@ -61,10 +61,11 @@
 </div>
 <div class="row">
 	<div class="col-md-12">
-		<h2>Overview</h2>
+		<h2>Experience</h2>
+		<p></p>
 		<div class="col-md-3">
 			<!-- <h4>Focus</h4> -->
-			<%= doughnut_chart @data_pie %>
+			<%= doughnut_chart @data_pie, @pie_chart_options %>
 			<!-- Dropdown: confidence: front end, back end, database, = piechart -->
 		</div>
 		<div class="col-md-9">
@@ -89,76 +90,69 @@
 </div>
 <div class="row">
 	<div class="col-md-12" style="">
-		<br>
-		<br>
-		<h2>Experience</h2>
-		<p></p>
-		<div class="col-md-6 ">
-			
-			<!-- <h4>Languages</h4>
-			 <p>css / years = x (out of 20)/ confidence = r (out of 100)/ shipped projects = size (enter integer)</p> -->
+		<center><h4> x = projects shipped | y = years of work | radius = confidence</h4></center>
+		<%= bubble_chart  @data, @bubble_chart_options %>	
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 ">
+		<table style="text-align: center;" class="align-middle table">
+			<thead style="">
+				<tr>
+					<th>language</th>
+					<th>years</th>
+					<th>shipped</th>
+					<th>confidence</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tr>
+				<td>html</td>
+				<td>10</td>
+				<td>80</td>
+				<td>60 /100</td>
+				<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
+			</tr>
+			<tr>
+				<td>css</td>
+				<td>10</td>
+				<td>60</td>
+				<td>80 /100</td>
+				<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
+			</tr>
+			<tr>
+				<td>php</td>
+				<td>4</td>
+				<td>40</td>
+				<td>20 /100</td>
+				<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
+			</tr>
+			<tr>
+				<td>ruby</td>
+				<td>0.8</td>
+				<td>2</td>
+				<td>25 /100</td>
+				<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
+			</tr>
+			<tr>
+				<td>rails</td>
+				<td>0.4</td>
+				<td>1</td>
+				<td>20 /100</td>
+				<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
+			</tr>
+			<tr>
+				<td>javascript</td>
+				<td>0.1</td>
+				<td>1</td>
+				<td>10 /100</td>
+				<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
+			</tr>
+		</table>
+	</div>
+</div>
 
-			<table style="text-align: center;" class="align-middle table">
-				<thead style="text-align: center;">
-					<tr>
-						<th>language</th>
-						<th>years</th>
-						<th>shipped</th>
-						<th>confidence</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tr>
-					<td>html</td>
-					<td>10</td>
-					<td>80</td>
-					<td>60 /100</td>
-					<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
-				</tr>
-				<tr>
-					<td>css</td>
-					<td>10</td>
-					<td>60</td>
-					<td>80 /100</td>
-					<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
-				</tr>
-				<tr>
-					<td>php</td>
-					<td>4</td>
-					<td>40</td>
-					<td>20 /100</td>
-					<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
-				</tr>
-				<tr>
-					<td>ruby</td>
-					<td>0.8</td>
-					<td>2</td>
-					<td>25 /100</td>
-					<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
-				</tr>
-				<tr>
-					<td>rails</td>
-					<td>0.4</td>
-					<td>1</td>
-					<td>20 /100</td>
-					<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
-				</tr>
-				<tr>
-					<td>javascript</td>
-					<td>0.1</td>
-					<td>1</td>
-					<td>10 /100</td>
-					<td><span style="background-color: rgb(255, 99, 132); padding: 4px 20px 4px 8px;" class="">&nbsp;</span></td>
-				</tr>
-				
-			</table>
-	</div>
-	<div class="col-md-6" style="">
-		<%= bubble_chart  @data, @options  %>	
-		<center><p> x = years of work | y = projects shipped <br> radius = confidence</p></center>
-	</div>
-</div>
-</div>
+
 
 <% if @work_history.present? %>
 	<div class="row">

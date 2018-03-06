@@ -43,9 +43,10 @@ class ProfilesController < ApplicationController
 		 # @options = {"height": 200, "width": 200} # pushes through
 		 # @options = [:height => 200, :width => 200] # pushes through
 		 # @options = {options: ["height" => 200, "width" => 200]} # pushes through
-		 # @options = ["height: 200", "width: 200"]
-		  @options = {height: 200, width: 200}
-		 
+		 # @options = [{"height": 200, "width": 200}]
+		 # @options = {height: 200, width: 200}
+		 @pie_chart_options = {cutoutPercentage: 20, legend: false, gridLines: true,  height: 300}
+		 @bubble_chart_options = {legend: false, height: 300}
 		
 	@data_pie = {
     datasets: [{
@@ -67,32 +68,32 @@ class ProfilesController < ApplicationController
 	        background_color:"rgb(255, 99, 132)",
 	        border_color: "rgba(255, 99, 132,1)",
 
-	        # x = years, y = projects shipped, r = confidence
-	        data: ["x": 0.4, "y": 1, "r": 20]
+	        # x = projects shipped, y = years, r = confidence
+	        data: ["x": 0.4, "y": 1, "r": 10]
 	    },
 	    {
 	        label: "html",
 	        backgroundColor: "rgba(255, 99, 132,0.7)",
 	        borderColor: "rgba(255, 99, 132,1)",
-	        data: ["x": 10, "y": 60, "r": 60]
+	        data: ["x": 60, "y": 11, "r": 60]
 	    },
 	    {
 	        label: "css",
 	        backgroundColor: "rgba(001,001,001,0.8)",
 	        borderColor: "rgba(001,001,001,1)",
-	        data: ["x": 10, "y": 50, "r": 60]
+	        data: ["x": 50, "y": 10, "r": 60]
 	    },
 	    {
 	        label: "php",
 	        backgroundColor: "rgba(54, 162, 235,0.6)",
 	        borderColor: "rgba(54, 162, 235,1)",
-	        data: ["x": 4, "y": 30, "r": 30]
+	        data: ["x": 40, "y": 3, "r": 10]
 	    },
 	    {
 	        label: "ruby",
 	        backgroundColor: "rgba(255, 205, 86,0.8)",
 	        borderColor: "rgba(255, 205, 86,1)",
-	        data: ["x": 1.8, "y": 2, "r": 30]
+	        data: ["x": 1.8, "y": 2, "r": 40]
 	    }, 
 	    	    {  	#spacers are needed so the data is not off the charts
 	    	    	# they need to be added last with no lables so they dont mess up the key
@@ -105,7 +106,7 @@ class ProfilesController < ApplicationController
 	        label: "",
 	        background_color:"rgb(0, 0, 0,0)",
 	        border_color: "rgba(0, 0, 0,0)",
-	        data: ["x": 11, "y": 65, "r": 1]
+	        data: ["x": 65, "y": 15, "r": 1]
 	    }  
 	  ]
 	}
