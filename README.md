@@ -36,6 +36,7 @@ Link:
 * JavaScript
 * Ruby On Rails
 * Postgres
+* Heroku
 * Gems:
   * Devise
   * Bootstrap 4
@@ -56,12 +57,6 @@ Link:
 * Dashboard for Admin to review KPIs
 * Ad Space
 
-## Coming Soon
-
-* Companies to pay monthly to search applicants and upload jobs
-* Pay to list featured jobs
-* Some content is hidden when reviewing applicant profiles who have not yet applied for a role at the employer company
-
 ## Applicant Specific
 
 * Search Jobs
@@ -77,3 +72,8 @@ Link:
 * View applications for jobs
 * Create profile page
 
+## Coming Soon
+
+* Companies to pay monthly to search applicants and upload jobs
+* Pay to list featured jobs
+* Some content is hidden when reviewing applicant profiles who have not yet applied for a role at the employer company
