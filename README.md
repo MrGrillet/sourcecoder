@@ -1,3 +1,5 @@
+![My image](http://mrgrillet.com/wp-content/uploads/2018/03/home-page.png)
+
 # Concept
 
 sourceCoder is a new take on a job board targeted specifically for developers. 
@@ -7,8 +9,6 @@ This is a project I have built to help learn to code. The intention was to pick 
 As a problem, I selected matching Junior Developers with great jobs. 
 
 Conversations and experience have shown me that the process of hiring junior developers is a tricky process for companies due to the range of applicant backgrounds and the hundreds of platforms like LinkedIn becoming bloated and unpopular with the Tech community. These platforms in an attempt to cater to every market lack features that help developers communicate their real value. My proposed solution was to create a database of developers that companies can tap into to quickly and find the ideal developer for their team. 
-
-Link:
 
 ## Product Objectives
 
@@ -57,6 +57,14 @@ Link:
 * Dashboard for Admin to review KPIs
 * Ad Space
 
+## Coming Soon
+
+* Companies to pay monthly to search applicants and upload jobs
+* Pay to list featured jobs
+* Some content is hidden when reviewing applicant profiles who have not yet applied for a role at the employer company
+
+![My image](http://mrgrillet.com/wp-content/uploads/2018/03/job-search.png)
+
 ## Applicant Specific
 
 * Search Jobs
@@ -72,8 +80,12 @@ Link:
 * View applications for jobs
 * Create profile page
 
-## Coming Soon
 
-* Companies to pay monthly to search applicants and upload jobs
-* Pay to list featured jobs
-* Some content is hidden when reviewing applicant profiles who have not yet applied for a role at the employer company
+Example of current profile page as viewed by an employer:
+
+![My image](https://www.dropbox.com/s/1s6ybywsrhst9je/profile%20page.png)
+
+
+Visit the app here...
+
+http://sourcecoder.herokuapp.com/
