@@ -2,13 +2,13 @@
 
 # Concept
 
-sourceCoder is a new take on a job board targeted specifically for developers. 
+sourceCoder is a new take on a job board targeted specifically for developers.
 
-This is a project I have built to help learn to code. The intention was to pick an interesting problem and build a solution around it and learn Ruby on Rails along the way. 
+This is a project I have built to help learn to code. The intention was to pick an interesting problem and build a solution around it and learn Ruby on Rails along the way.
 
-As a problem, I selected matching Junior Developers with great jobs. 
+As a problem, I selected matching Junior Developers with great jobs.
 
-Conversations and experience have shown me that the process of hiring junior developers is a tricky process for companies due to the range of applicant backgrounds and the hundreds of platforms like LinkedIn becoming bloated and unpopular with the Tech community. These platforms in an attempt to cater to every market lack features that help developers communicate their real value. My proposed solution was to create a database of developers that companies can tap into to quickly and find the ideal developer for their team. 
+Conversations and experience have shown me that the process of hiring junior developers is a tricky process for companies due to the range of applicant backgrounds and the hundreds of platforms like LinkedIn becoming bloated and unpopular with the Tech community. These platforms in an attempt to cater to every market lack features that help developers communicate their real value. My proposed solution was to create a database of developers that companies can tap into to quickly and find the ideal developer for their team.
 
 ## Product Objectives
 
@@ -76,7 +76,7 @@ Conversations and experience have shown me that the process of hiring junior dev
 ## Employer Specific
 
 * Search all applicants
-* Create and Edit Jost Ads
+* Create and Edit Job Ads
 * View applications for jobs
 * Create profile page
 
