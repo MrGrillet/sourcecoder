@@ -21,7 +21,6 @@ class CodeLanguagesController < ApplicationController
 	end
 
 	def show
-		
 	end
 
 	def update
@@ -34,7 +33,6 @@ class CodeLanguagesController < ApplicationController
 	end
 
 	def edit
-		
 	end
 
 	def destroy
@@ -46,11 +44,16 @@ class CodeLanguagesController < ApplicationController
 	private
 
 		def code_language_params
-			params.require(:code_language).permit(:name, :colour_r, :colour_g, :colour_b, :colour_opacity)
+			params.require(:code_language).permit(
+				:name,
+				:colour_r,
+				:colour_g,
+				:colour_b,
+				:colour_opacity
+			)
 		end
-		
+
 		def set_lang
 			@language = CodeLanguage.find(params[:id])
 		end
-
 end

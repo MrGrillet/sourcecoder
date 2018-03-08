@@ -1,8 +1,9 @@
 class Job < ActiveRecord::Base
 	belongs_to :user
-	
+
 	has_many :job_languages
 	has_many :code_languages, through: :job_languages
+	belongs_to :company
 	#validates :user_id, presance: true
 
 	def self.search(term)
@@ -13,7 +14,3 @@ class Job < ActiveRecord::Base
 		end
 	end
 end
-
-
-
-    

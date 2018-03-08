@@ -1,7 +1,9 @@
 class Profile < ActiveRecord::Base
-	#	belongs_to :user	
+	# belongs_to :user
 	has_many :previous_jobs, dependent: :destroy
+	has_many :experiences, through: :previous_jobs
 	accepts_nested_attributes_for :previous_jobs, allow_destroy: true
+	accepts_nested_attributes_for :experiences
 
 	def self.search(term)
 		if term
@@ -11,9 +13,3 @@ class Profile < ActiveRecord::Base
 		end
 	end
 end
-
-
-
-
-
-  

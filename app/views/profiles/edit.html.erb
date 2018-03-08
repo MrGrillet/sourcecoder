@@ -3,51 +3,55 @@
 	<div class="col-md-8 col-md-offset-2">
 		<h1>Edit your profile</h1>
 	</div>
-	<div class="col-md-12"> 
+	<div class="col-md-12">
 		<%= form_for(@profile, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_bio %></div>
 			<div class="col-sm-10 "> <%= f.text_area :profile_bio, rows: 10, class: "form-control", placeholder: "Tell us about yourself", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_objective %></div>
 			<div class="col-sm-10 "><%= f.text_area :profile_objective, rows: 5, class: "form-control", placeholder: "", autofocus: true  %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_additional_notes %></div>
 			<div class="col-sm-10 "><%= f.text_area :profile_additional_notes, rows: 10, class: "form-control", placeholder: "", autofocus: true  %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_url %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_url, class: "form-control", placeholder: "URL", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_phone_number %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_phone_number, class: "form-control", placeholder: "", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_twitter %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_twitter, class: "form-control", placeholder: "", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_github %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_github, class: "form-control", placeholder: "", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_linkedin %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_linkedin, class: "form-control", placeholder: "", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_youtube %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_youtube, class: "form-control", placeholder: "", autofocus: true %></div>
 		</div>
-		<div class="form-group" > 
+		<div class="form-group" >
+			<div class="col-sm-2 "><%= f.label :profile_wallpaper %></div>
+			<div class="col-sm-10 "><%= f.text_field :profile_wallpaper, class: "form-control", placeholder: "", autofocus: true %></div>
+		</div>
+		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :profile_image %></div>
 			<div class="col-sm-10 "><%= f.text_field :profile_image, class: "form-control", placeholder: "", autofocus: true %></div>
 		</div>
 		<div class="form-group" >
 			<div class="col-sm-2 contol-label"><%= f.label :work_history %></div>
-		
+
 			<div class="col-sm-10 ">
 					<div class='fields'>
       					<%= f.fields_for :previous_jobs do |p| %>
@@ -60,13 +64,9 @@
 	  			</div>
 			</div>
 		</div>
-		<div class="form-group" > 
-			<div class="col-sm-2 "><%= f.label :profile_wallpaper %></div>
-			<div class="col-sm-10 "><%= f.text_field :profile_wallpaper, class: "form-control", placeholder: "", autofocus: true %></div>
-		</div>
 		<div class="form-group" >
-			<div class="col-sm-10 col-sm-offset-2"><%= f.submit class: "btn btn-lg btn-success" %>    
-				<%= link_to "Cancel and return to job listings", jobs_path %>	
+			<div class="col-sm-10 col-sm-offset-2"><%= f.submit class: "btn btn-lg btn-success" %>
+				<%= link_to "Cancel and return to job listings", jobs_path %>
 			</div>
 		</div>
 		<% end %>

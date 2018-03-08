@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 	before_action :set_company, only: [:edit, :update, :show, :destroy]
 	skip_before_action :authenticate_user!, only: [:show, :index]
-	
+
 
 	def index
 		@companies = Company.all
@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
 		else
 			render 'new'
 		end
-		
+
 	end
 
 	def new
@@ -45,7 +45,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def edit
-		
+
 	end
 
 	private
@@ -53,9 +53,22 @@ class CompaniesController < ApplicationController
 			@company = Company.find(params[:id])
 		end
 
-		
+
 		def company_params
-			params.require(:company).permit(:company_name, :company_description, :company_url, :company_twitter, :company_facebook, :company_youtube, :company_github, :user_id, :logo_url, :wallpaper_url, :company_strapline, :location )
+			params.require(:company).permit(
+				:company_name,
+				:company_description,
+				:company_url,
+				:company_twitter,
+				:company_facebook,
+				:company_youtube,
+				:company_github,
+				:user_id,
+				:logo_url,
+				:wallpaper_url,
+				:company_strapline,
+				:location
+			)
 		end
 
 end

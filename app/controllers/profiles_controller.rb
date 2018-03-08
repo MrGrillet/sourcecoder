@@ -2,21 +2,22 @@ class ProfilesController < ApplicationController
 	before_action :set_profile, only: [:edit, :update, :show, :destroy]
 
 	def index
-		# @profiles = Profile.all	
+		# @profiles = Profile.all
 		@profiles = Profile.search(params[:term])
 	end
 
 	def new
 		@profile = Profile.new
-		@profiles = Profile.all	
+		@profiles = Profile.all
 		@profile.previous_jobs.build
-
-
 	end
 
 	def edit
-		@profiles = Profile.all	
+		@profiles = Profile.all
 		@profile.previous_jobs.build
+		@code_languages = CodeLanguage.all
+		@experiences = Experience.all
+
 	end
 
 	def create
@@ -39,15 +40,10 @@ class ProfilesController < ApplicationController
 			@profile = current_user.id
 			user_id = current_user.id
 		end
-	
-		 # @options = {"height": 200, "width": 200} # pushes through
-		 # @options = [:height => 200, :width => 200] # pushes through
-		 # @options = {options: ["height" => 200, "width" => 200]} # pushes through
-		 # @options = [{"height": 200, "width": 200}]
-		 # @options = {height: 200, width: 200}
-		 @pie_chart_options = {cutoutPercentage: 20, legend: false, gridLines: true,  height: 300}
-		 @bubble_chart_options = {legend: false, height: 300}
-		
+
+	@pie_chart_options = {cutoutPercentage: 20, legend: false, height: 300}
+	@bubble_chart_options = {legend: false, height: 300}
+
 	@data_pie = {
     datasets: [{
         data: [70, 20, 10],
@@ -94,7 +90,7 @@ class ProfilesController < ApplicationController
 	        backgroundColor: "rgba(255, 205, 86,0.8)",
 	        borderColor: "rgba(255, 205, 86,1)",
 	        data: ["x": 1.8, "y": 2, "r": 40]
-	    }, 
+	    },
 	    	    {  	#spacers are needed so the data is not off the charts
 	    	    	# they need to be added last with no lables so they dont mess up the key
 	        label: "",
@@ -107,13 +103,9 @@ class ProfilesController < ApplicationController
 	        background_color:"rgb(0, 0, 0,0)",
 	        border_color: "rgba(0, 0, 0,0)",
 	        data: ["x": 65, "y": 15, "r": 1]
-	    }  
+	    }
 	  ]
 	}
-
-
-
-
 	end
 
 	def update
@@ -140,6 +132,33 @@ class ProfilesController < ApplicationController
 
 
 		def profile_params
-			params.require(:profile).permit(:profile_bio, :profile_objective, :profile_additional_notes, :profile_url, :profile_phone_number, :user, :profile_twitter, :profile_github, :profile_linkedin, :profile_featured, :profile_youtube, :profile_image, :profile_wallpaper, :user_id, previous_jobs_attributes: PreviousJob.attribute_names.map(&:to_sym).push(:_destroy))
+			params.require(:profile).permit(
+				:profile_bio,
+				:profile_objective,
+				:profile_additional_notes,
+				:profile_url,
+				:profile_phone_number,
+				:user,
+				:profile_twitter,
+				:profile_github,
+				:profile_linkedin,
+				:profile_featured,
+				:profile_youtube,
+				:profile_image,
+				:profile_wallpaper,
+				:user_id,
+				# previous_jobs_attributes: [
+				#	:previous_job_description,
+				#	:previous_job_title,
+				#	:previous_company_name,
+				#	:_destroy
+				#],
+
+				previous_jobs_attributes: [ PreviousJob.attribute_names.map(&:to_sym).push(:_destroy) ],
+				experiences_attributes: [
+					:previous_job_id,
+					:code_language_ids
+				]
+			)
 		end
 end

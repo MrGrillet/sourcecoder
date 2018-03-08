@@ -32,12 +32,7 @@ class JobsController < ApplicationController
 
 	def show
 		@jobs = Job.all
-		@company_name = Company.find(@job.company_id)[:company_name]
-		@company_url = Company.find(@job.company_id)[:company_url]
-		@company_github = Company.find(@job.company_id)[:company_github]
-		@company_facebook = Company.find(@job.company_id)[:company_facebook]
-		@company_twitter = Company.find(@job.company_id)[:company_twitter]
-		@company_logo = Company.find(@job.company_id)[:logo_url]
+		@company = @job.company
 	end
 
 	def update
@@ -60,9 +55,24 @@ class JobsController < ApplicationController
 		def set_job
 			@job = Job.find(params[:id])
 		end
-		
+
 		def job_params
-			params.require(:job).permit(:title, :description, :location, :salary, :company_id, :user, :benefits, :tech_stack, :skills_ideal, :skills_essential, :applicant_background, :the_role, :term, code_language_ids:[])
+			params.require(:job).permit(
+				:title,
+				:description,
+				:location,
+				:salary,
+				:company_id,
+				:user,
+				:benefits,
+				:tech_stack,
+				:skills_ideal,
+				:skills_essential,
+				:applicant_background,
+				:the_role,
+				:term,
+				code_language_ids:[]
+			)
 		end
 
 end

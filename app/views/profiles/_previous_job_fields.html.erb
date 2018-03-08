@@ -5,6 +5,11 @@
 		<%= f.text_field :previous_company_name, class: "form-control", placeholder: "Company Name", autofocus: true %>
 		<br />
 		<%= f.text_area :previous_job_description, rows: 5, class: "form-control", placeholder: "Job Description", autofocus: true %>
+		<br />
+		<%= f.collection_check_boxes :code_language_ids, CodeLanguage.all, :id, :name do |cb| %>
+			<%= cb.label(class: "checkbox-inline input_checkbox") { cb.check_box(class: "checkbox") + cb.text } %>
+		<% end %>
+
 	</div>
 		<div class="col-sm-2 contol-label">
 		<%= f.hidden_field :_destroy, class: "remove" %>
